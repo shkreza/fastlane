@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		575313091C784FCA0069AD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575313081C784FCA0069AD41 /* AppDelegate.swift */; };
-		5753130B1C784FCA0069AD41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753130A1C784FCA0069AD41 /* ViewController.swift */; };
+		5753130B1C784FCA0069AD41 /* TripMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753130A1C784FCA0069AD41 /* TripMapController.swift */; };
 		5753130E1C784FCA0069AD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5753130C1C784FCA0069AD41 /* Main.storyboard */; };
 		575313111C784FCA0069AD41 /* fastlane.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5753130F1C784FCA0069AD41 /* fastlane.xcdatamodeld */; };
 		575313131C784FCA0069AD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575313121C784FCA0069AD41 /* Assets.xcassets */; };
 		575313161C784FCA0069AD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575313141C784FCA0069AD41 /* LaunchScreen.storyboard */; };
 		575313211C784FCA0069AD41 /* fastlaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575313201C784FCA0069AD41 /* fastlaneTests.swift */; };
 		5753132C1C784FCA0069AD41 /* fastlaneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753132B1C784FCA0069AD41 /* fastlaneUITests.swift */; };
+		5753133D1C7914290069AD41 /* TripSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753133C1C7914290069AD41 /* TripSelectorController.swift */; };
+		5753133F1C7914730069AD41 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753133E1C7914730069AD41 /* Trip.swift */; };
+		575313441C7914C20069AD41 /* Traveller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575313431C7914C20069AD41 /* Traveller.swift */; };
+		575313461C7915910069AD41 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575313451C7915910069AD41 /* TripCell.swift */; };
+		575313481C7916210069AD41 /* TripClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575313471C7916210069AD41 /* TripClient.swift */; };
+		57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +43,7 @@
 /* Begin PBXFileReference section */
 		575313051C784FCA0069AD41 /* fastlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastlane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575313081C784FCA0069AD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5753130A1C784FCA0069AD41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5753130A1C784FCA0069AD41 /* TripMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapController.swift; sourceTree = "<group>"; };
 		5753130D1C784FCA0069AD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		575313101C784FCA0069AD41 /* fastlane.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fastlane.xcdatamodel; sourceTree = "<group>"; };
 		575313121C784FCA0069AD41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +55,12 @@
 		575313271C784FCA0069AD41 /* fastlaneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fastlaneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5753132B1C784FCA0069AD41 /* fastlaneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fastlaneUITests.swift; sourceTree = "<group>"; };
 		5753132D1C784FCA0069AD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5753133C1C7914290069AD41 /* TripSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSelectorController.swift; sourceTree = "<group>"; };
+		5753133E1C7914730069AD41 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		575313431C7914C20069AD41 /* Traveller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Traveller.swift; sourceTree = "<group>"; };
+		575313451C7915910069AD41 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
+		575313471C7916210069AD41 /* TripClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripClient.swift; sourceTree = "<group>"; };
+		57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStackManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +111,14 @@
 		575313071C784FCA0069AD41 /* fastlane */ = {
 			isa = PBXGroup;
 			children = (
+				5753133B1C7913BD0069AD41 /* Controller */,
+				5753133A1C7913B10069AD41 /* Model */,
+				575313391C7913AC0069AD41 /* View */,
 				575313081C784FCA0069AD41 /* AppDelegate.swift */,
-				5753130A1C784FCA0069AD41 /* ViewController.swift */,
 				5753130C1C784FCA0069AD41 /* Main.storyboard */,
 				575313121C784FCA0069AD41 /* Assets.xcassets */,
 				575313141C784FCA0069AD41 /* LaunchScreen.storyboard */,
 				575313171C784FCA0069AD41 /* Info.plist */,
-				5753130F1C784FCA0069AD41 /* fastlane.xcdatamodeld */,
 			);
 			path = fastlane;
 			sourceTree = "<group>";
@@ -126,6 +139,35 @@
 				5753132D1C784FCA0069AD41 /* Info.plist */,
 			);
 			path = fastlaneUITests;
+			sourceTree = "<group>";
+		};
+		575313391C7913AC0069AD41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5753130A1C784FCA0069AD41 /* TripMapController.swift */,
+				5753133C1C7914290069AD41 /* TripSelectorController.swift */,
+				575313451C7915910069AD41 /* TripCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5753133A1C7913B10069AD41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5753133E1C7914730069AD41 /* Trip.swift */,
+				575313431C7914C20069AD41 /* Traveller.swift */,
+				5753130F1C784FCA0069AD41 /* fastlane.xcdatamodeld */,
+				57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5753133B1C7913BD0069AD41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				575313471C7916210069AD41 /* TripClient.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +301,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5753130B1C784FCA0069AD41 /* ViewController.swift in Sources */,
+				575313461C7915910069AD41 /* TripCell.swift in Sources */,
+				5753133F1C7914730069AD41 /* Trip.swift in Sources */,
+				5753130B1C784FCA0069AD41 /* TripMapController.swift in Sources */,
 				575313091C784FCA0069AD41 /* AppDelegate.swift in Sources */,
+				575313481C7916210069AD41 /* TripClient.swift in Sources */,
 				575313111C784FCA0069AD41 /* fastlane.xcdatamodeld in Sources */,
+				5753133D1C7914290069AD41 /* TripSelectorController.swift in Sources */,
+				57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */,
+				575313441C7914C20069AD41 /* Traveller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +534,7 @@
 				575313321C784FCA0069AD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		575313331C784FCA0069AD41 /* Build configuration list for PBXNativeTarget "fastlaneTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +543,7 @@
 				575313351C784FCA0069AD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		575313361C784FCA0069AD41 /* Build configuration list for PBXNativeTarget "fastlaneUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +552,7 @@
 				575313381C784FCA0069AD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
