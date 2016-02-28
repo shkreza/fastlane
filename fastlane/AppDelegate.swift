@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Initialize sign-in
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
         return true
     }
 
@@ -42,6 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         DataStackManager.sharedInstance.saveContext()
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+            return GIDSignIn.sharedInstance().handleURL(url,
+                sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+                annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+            return GIDSignIn.sharedInstance().handleURL(url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
 }
 

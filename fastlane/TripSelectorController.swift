@@ -31,6 +31,8 @@ class TripSelectorController: UIViewController {
     }
     
     override func viewDidLoad() {
+        prepLogoutButton()
+        
         tripsTable.delegate = self
         tripsTable.dataSource = self
         fetchTripsResultController.delegate = self
@@ -47,6 +49,12 @@ class TripSelectorController: UIViewController {
         let trip = Trip(title: "\(date)", context: sharedContext)
         
         return trip
+    }
+    
+    func prepLogoutButton() {
+        let logoutButton = UIBarButtonItem()
+        logoutButton.title = "Logout"
+        navigationItem.backBarButtonItem = logoutButton
     }
 }
 

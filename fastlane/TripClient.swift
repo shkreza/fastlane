@@ -11,6 +11,8 @@ import UIKit
 
 class TripClient {
     
+    static var sharedInstance = TripClient()
+    
     lazy var session: NSURLSession = {
         return NSURLSession.sharedSession()
     }()
