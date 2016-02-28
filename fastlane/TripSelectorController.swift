@@ -8,26 +8,52 @@
 
 import CoreData
 import Foundation
+import Google
 import UIKit
 
 class TripSelectorController: UIViewController {
     
     @IBOutlet weak var tripsTable: UITableView!
     
-    lazy var fetchTripsResultController: NSFetchedResultsController = {
-        let fetchRequest = NSFetchRequest(entityName: "Trip")
-        let sortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        var fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchResultsController
-    }()
+    var fetchTripsResultController: NSFetchedResultsController!
     
     lazy var sharedContext: NSManagedObjectContext = {
         return DataStackManager.sharedInstance.managedObjectContext
     }()
     
+    lazy var tripClient: TripClient = {
+        return TripClient.sharedInstance
+    }()
+    
+    func initFetchTripsResultsController() {
+        let fetchRequest = NSFetchRequest(entityName: "Trip")
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let traveller = self.tripClient.traveller {
+            let predicate = NSPredicate(format: "traveller.id == %@", traveller.id)
+            fetchRequest.predicate = predicate
+        } else {
+            let predicate = NSPredicate(format: "traveller.id == %@", argumentArray: nil)
+            fetchRequest.predicate = predicate
+        }
+        fetchTripsResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchTripsResultController.delegate = self
+        try! fetchTripsResultController.performFetch()
+    }
+    
     func saveTrips() {
         DataStackManager.sharedInstance.saveContext()
+    }
+    
+    @IBAction func logoutButtonPRessed(sender: AnyObject) {
+        logUserOut()
+        self.dismissViewControllerAnimated(true, completion: {
+            self.tripClient.unloadTraveller()
+        })
+    }
+    
+    func logUserOut() {
+        GIDSignIn.sharedInstance().signOut()
     }
     
     override func viewDidLoad() {
@@ -35,18 +61,21 @@ class TripSelectorController: UIViewController {
         
         tripsTable.delegate = self
         tripsTable.dataSource = self
-        fetchTripsResultController.delegate = self
-        try! fetchTripsResultController.performFetch()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     @IBAction func newTripPressed(sender: UIBarButtonItem) {
-        createNewTrip()
+        let traveller = tripClient.traveller
+        createNewTrip(traveller)
         saveTrips()
     }
     
-    func createNewTrip() -> Trip {
+    func createNewTrip(traveller: Traveller) -> Trip {
         let date = NSDate()
-        let trip = Trip(title: "\(date)", context: sharedContext)
+        let trip = Trip(title: "\(date)", traveller: traveller, context: sharedContext)
         
         return trip
     }
@@ -60,9 +89,13 @@ class TripSelectorController: UIViewController {
 
 extension TripSelectorController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchTripsResultController.sections?[section]
-        let cellCount = (sectionInfo?.numberOfObjects)!
-        return cellCount
+        if let fetchTripsResultController = fetchTripsResultController {
+            let sectionInfo = fetchTripsResultController.sections?[section]
+            let cellCount = (sectionInfo?.numberOfObjects)!
+            return cellCount
+        } else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

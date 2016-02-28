@@ -30,6 +30,11 @@
                                             <action selector="newTripPressed:" destination="wLW-38-wrD" id="Icv-5s-wSF"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Logout" id="jc1-Wm-t9y">
+                                        <connections>
+                                            <action selector="logoutButtonPRessed:" destination="wLW-38-wrD" id="gEE-d3-oHg"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ojn-7K-2G0">
@@ -103,7 +108,6 @@
         <!--Navigation Controller-->
         <scene sceneID="LkO-8A-AqQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tv8-kX-Kga" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="7sF-4y-CTu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5wh-XW-9MT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -114,6 +118,7 @@
                         <segue destination="hD2-c0-ZhI" kind="relationship" relationship="rootViewController" id="xLI-Xb-mWV"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tv8-kX-Kga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1039" y="335"/>
         </scene>
@@ -137,12 +142,19 @@
                                     <constraint firstAttribute="width" constant="150" id="SvC-6v-eAF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58J-0y-cYg">
+                                <rect key="frame" x="213" y="425" width="174" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login as anonymous user"/>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Di1-cN-Rgm" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="VTE-mU-I0b"/>
                             <constraint firstItem="Di1-cN-Rgm" firstAttribute="centerY" secondItem="F95-HS-Pmp" secondAttribute="centerY" id="hDP-RA-N4J"/>
+                            <constraint firstItem="qB1-DF-08A" firstAttribute="top" secondItem="58J-0y-cYg" secondAttribute="bottom" constant="100" id="mqN-zD-EcQ"/>
+                            <constraint firstItem="58J-0y-cYg" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="sfv-8q-fuE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WVv-LM-GRY"/>

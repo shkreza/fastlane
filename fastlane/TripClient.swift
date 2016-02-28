@@ -7,11 +7,19 @@
 //
 
 import Foundation
+import CoreData
+import Google
 import UIKit
 
 class TripClient {
     
     static var sharedInstance = TripClient()
+    
+    var traveller: Traveller!
+    
+    lazy var sharedContext: NSManagedObjectContext = {
+        return DataStackManager.sharedInstance.managedObjectContext
+    }()
     
     lazy var session: NSURLSession = {
         return NSURLSession.sharedSession()
@@ -113,5 +121,32 @@ class TripClient {
         } else {
             return url
         }
+    }
+    
+    func unloadTraveller() {
+        if let traveller = traveller {
+            sharedContext.deleteObject(traveller)
+            self.traveller = nil
+        }
+    }
+    
+    func loadTraveller(user: GIDGoogleUser) {
+        let id = user.userID!
+        let fetchRequest = NSFetchRequest(entityName: "Traveller")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        let results = try! sharedContext.executeFetchRequest(fetchRequest)
+        if results.count == 1 {
+            traveller = results[0] as! Traveller
+        } else if results.count == 0 {
+            traveller = Traveller(user: user, context: sharedContext)
+            saveContext()
+        } else {
+            print("Many travellers with same id exist: \(results)")
+            abort()
+        }
+    }
+    
+    func saveContext() {
+        DataStackManager.sharedInstance.saveContext()
     }
 }

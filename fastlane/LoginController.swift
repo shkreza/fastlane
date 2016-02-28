@@ -32,7 +32,7 @@ extension LoginViewController: GIDSignInDelegate {
                 return
             }
             
-            self.presentPostLoginView(user!)
+            self.handlePostLogin(user!)
         }
     }
     
@@ -86,6 +86,11 @@ extension LoginViewController: GIDSignInDelegate {
         }
     }
     
+    func handlePostLogin(user: GIDGoogleUser) {
+        tripClient.loadTraveller(user)
+        presentPostLoginView(user)
+    }
+    
     func presentPostLoginView(user: GIDGoogleUser) {
         print("User \(user.profile.name) has logged in: \(user.userID)")
         let userId = user.userID                  // For client-side use only!
@@ -98,6 +103,7 @@ extension LoginViewController: GIDSignInDelegate {
         print("email: \(email)")
 
         let tripSelectorController = storyboard?.instantiateViewControllerWithIdentifier("TripSelectorController") as! TripSelectorController
+        tripSelectorController.initFetchTripsResultsController()
         navigationController?.presentViewController(tripSelectorController, animated: true, completion: nil)
     }
 }

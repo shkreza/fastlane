@@ -12,15 +12,17 @@ import CoreData
 class Trip: NSManagedObject {
     
     @NSManaged var title: String!
+    @NSManaged var traveller: Traveller!
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init(title: String, context: NSManagedObjectContext) {
+    init(title: String, traveller: Traveller!, context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
 
         self.title = title
+        self.traveller = traveller
     }
 }
