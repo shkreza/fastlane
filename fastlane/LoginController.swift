@@ -92,22 +92,25 @@ extension LoginViewController: GIDSignInDelegate {
         }
     }
     
-    func handlePostLogin(user: GIDGoogleUser) {
-        tripClient.loadTraveller(user)
-        presentPostLoginView(user)
+    func handlePostLogin(user: GIDGoogleUser!) {
+        if let user = user {
+            print("User \(user.profile.name) has logged in: \(user.userID)")
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let name = user.profile.name
+            let email = user.profile.email
+            print("id: \(userId)")
+            print("token: \(idToken)")
+            print("name: \(name)")
+            print("email: \(email)")
+            
+            tripClient.loadTraveller(user)
+        }
+
+        presentPostLoginView()
     }
     
-    func presentPostLoginView(user: GIDGoogleUser) {
-        print("User \(user.profile.name) has logged in: \(user.userID)")
-        let userId = user.userID                  // For client-side use only!
-        let idToken = user.authentication.idToken // Safe to send to the server
-        let name = user.profile.name
-        let email = user.profile.email
-        print("id: \(userId)")
-        print("token: \(idToken)")
-        print("name: \(name)")
-        print("email: \(email)")
-
+    func presentPostLoginView() {
         let tripSelectorController = storyboard?.instantiateViewControllerWithIdentifier("TripSelectorController") as! TripSelectorController
         tripSelectorController.initFetchTripsResultsController()
         navigationController?.presentViewController(tripSelectorController, animated: true, completion: nil)

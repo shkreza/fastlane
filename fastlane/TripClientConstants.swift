@@ -23,7 +23,8 @@ struct TripClientConstants {
     
     struct GoogleRequestValues {
         static let VERIFICATION_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo"
-        static let GOOGLE_UPLOAD_URL = "https://www.googleapis.com/upload/storage/v1/b/" + GOOGLE_BUCKET_NAME + "/o/"
+        static let GOOGLE_UPLOAD_URL = "https://www.googleapis.com/upload/storage/v1/b/\(GOOGLE_BUCKET_NAME)/o/"
+        static let GOOGLE_DOWNLOAD_URL = "https://\(GOOGLE_BUCKET_NAME).storage.googleapis.com"
         static let HEADER_ACCEPT = "application/json"
         static let UPLOAD_TYPE_MEDIA = "media"
         static let CONTENT_TYPE_JSON = "Application/json"

@@ -31,6 +31,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="gU4-Mu-jIv"/>
+                                    <barButtonItem title="Load" id="FDa-Zj-xW1">
+                                        <connections>
+                                            <action selector="loadFromCloud:" destination="wLW-38-wrD" id="LQt-y7-QCX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="17" style="plain" systemItem="fixedSpace" id="RlH-gG-4JT"/>
                                     <barButtonItem title="Save to cloud" id="w7B-ge-klV">
                                         <connections>
                                             <action selector="saveToCloud:" destination="wLW-38-wrD" id="nzK-ON-bc0"/>
@@ -53,7 +59,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTq-AS-HOU" id="uD7-aR-Snl">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -74,6 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cND-Kd-HZK"/>
                     <connections>
+                        <outlet property="loadFromCloudButton" destination="FDa-Zj-xW1" id="uuK-RR-BrO"/>
                         <outlet property="saveToCloudButton" destination="w7B-ge-klV" id="dlK-fH-P1q"/>
                         <outlet property="tripsTable" destination="ojn-7K-2G0" id="paD-qv-svE"/>
                     </connections>
@@ -150,19 +157,25 @@
                                     <constraint firstAttribute="width" constant="150" id="SvC-6v-eAF"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58J-0y-cYg">
-                                <rect key="frame" x="213" y="425" width="174" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY5-wb-ahp">
+                                <rect key="frame" x="213" y="428" width="174" height="30"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IjW-Li-g73"/>
+                                </constraints>
                                 <state key="normal" title="Login as anonymous user"/>
+                                <connections>
+                                    <action selector="anonymousLoginButtonPressed:" destination="hD2-c0-ZhI" eventType="touchUpInside" id="our-hl-AYN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oY5-wb-ahp" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="P5p-Xc-zbj"/>
                             <constraint firstItem="Di1-cN-Rgm" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="VTE-mU-I0b"/>
                             <constraint firstItem="Di1-cN-Rgm" firstAttribute="centerY" secondItem="F95-HS-Pmp" secondAttribute="centerY" id="hDP-RA-N4J"/>
-                            <constraint firstItem="qB1-DF-08A" firstAttribute="top" secondItem="58J-0y-cYg" secondAttribute="bottom" constant="100" id="mqN-zD-EcQ"/>
-                            <constraint firstItem="58J-0y-cYg" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="sfv-8q-fuE"/>
+                            <constraint firstItem="qB1-DF-08A" firstAttribute="top" secondItem="oY5-wb-ahp" secondAttribute="bottom" constant="120" id="y7C-ye-lSi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WVv-LM-GRY"/>

@@ -33,7 +33,7 @@ class TripSelectorController: UIViewController {
             let predicate = NSPredicate(format: "traveller.id == %@", traveller.id)
             fetchRequest.predicate = predicate
         } else {
-            let predicate = NSPredicate(format: "traveller.id == %@", argumentArray: nil)
+            let predicate = NSPredicate(format: "traveller.id == nil", argumentArray: nil)
             fetchRequest.predicate = predicate
         }
         fetchTripsResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -56,6 +56,7 @@ class TripSelectorController: UIViewController {
         GIDSignIn.sharedInstance().signOut()
     }
     
+    @IBOutlet weak var loadFromCloudButton: UIBarButtonItem!
     @IBOutlet weak var saveToCloudButton: UIBarButtonItem!
     
     override func viewWillAppear(animated: Bool) {
@@ -63,8 +64,10 @@ class TripSelectorController: UIViewController {
         
         if let _ = tripClient.traveller {
             saveToCloudButton.enabled = true
+            loadFromCloudButton.enabled = true
         } else {
             saveToCloudButton.enabled = false
+            loadFromCloudButton.enabled = false
         }
     }
     
@@ -78,6 +81,10 @@ class TripSelectorController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
+    @IBAction func loadFromCloud(sender: AnyObject) {
+        tripClient.loadFromCloud(self)
+    }
 
     @IBAction func saveToCloud(sender: AnyObject) {
         tripClient.saveTripsToCloud(self)
@@ -89,7 +96,7 @@ class TripSelectorController: UIViewController {
         saveTrips()
     }
     
-    func createNewTrip(traveller: Traveller) -> Trip {
+    func createNewTrip(traveller: Traveller!) -> Trip {
         let date = NSDate()
         let trip = Trip(title: "\(date)", traveller: traveller, context: sharedContext)
         

@@ -132,14 +132,51 @@ class TripClient {
         }
     }
     
+    func loadFromCloud(view: UIViewController) {
+        guard let _ = traveller else {
+            showError(view, title: "Error", message: "No user is logged in.")
+            return
+        }
+        
+        let token = traveller.accessToken
+        
+        let headerParams: [String: String] = [
+            TripClientConstants.GoogleRequestKeys.AUTHORIZATION:
+            "Bearer \(token)"
+        ]
+        makeGetRequest(TripClientConstants.GoogleRequestValues.GOOGLE_DOWNLOAD_URL + "/\(traveller.id)",
+            headerParams: headerParams, params: nil) {
+                error, data in
+                guard error == nil else {
+                    let errorMessage = error?.description
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.showError(view, title: "Save error", message: (errorMessage)!)
+                    })
+                    return
+                }
+                
+                guard let _ = data else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.showError(view, title: "Save error - empty data", message: (error?.description)!)
+                    })
+                    return
+                }
+                
+                let response = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [String: AnyObject]
+                print(response)
+        }
+    }
+    
     func saveTripsToCloud(view: UIViewController) {
         guard let _ = traveller else {
             showError(view, title: "Error", message: "No user is logged in.")
             return
         }
        
-        let str = "Hello world!"
+        let str = "{\"kind\": \"storage#bucket\", \"id\": \"travellertrips\"}"
+
         let data: NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
+        
         let token = traveller.accessToken
         
         let headerParams: [String: String] = [

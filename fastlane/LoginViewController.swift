@@ -26,8 +26,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // Uncomment to automatically sign in the user.
         //GIDSignIn.sharedInstance().signInSilently()
         GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/devstorage.read_write")
-        GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/cloud-platform")
-        GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/devstorage.full_control")
+    }
+    
+    @IBAction func anonymousLoginButtonPressed(sender: AnyObject) {
+        handlePostLogin(nil)
     }
     
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
