@@ -56,9 +56,15 @@ extension LoginViewController: GIDSignInDelegate {
             return
         }
         
-        let headerParams = ["Accept": TripClientConstants.GoogleRequestKeys.HEADER_ACCEPT]
-        let params = [TripClientConstants.GoogleRequestKeys.ID_TOKEN: user!.authentication.idToken!]
-        tripClient.makePostRequest(TripClientConstants.GoogleRequestKeys.VERIFICATION_URL, headerParams: headerParams, params: params, body: nil) {
+        let headerParams = [
+            TripClientConstants.GoogleRequestKeys.HEADER_ACCEPT:
+                TripClientConstants.GoogleRequestValues.HEADER_ACCEPT
+        ]
+        let params = [
+            TripClientConstants.GoogleRequestKeys.ID_TOKEN:
+                user!.authentication.idToken!
+        ]
+        tripClient.makePostRequest(TripClientConstants.GoogleRequestValues.VERIFICATION_URL, headerParams: headerParams, params: params, body: nil) {
             (error, data) in
             
             guard error == nil else {

@@ -56,6 +56,18 @@ class TripSelectorController: UIViewController {
         GIDSignIn.sharedInstance().signOut()
     }
     
+    @IBOutlet weak var saveToCloudButton: UIBarButtonItem!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let _ = tripClient.traveller {
+            saveToCloudButton.enabled = true
+        } else {
+            saveToCloudButton.enabled = false
+        }
+    }
+    
     override func viewDidLoad() {
         prepLogoutButton()
         
@@ -67,7 +79,11 @@ class TripSelectorController: UIViewController {
         super.viewDidAppear(animated)
     }
 
-    @IBAction func newTripPressed(sender: UIBarButtonItem) {
+    @IBAction func saveToCloud(sender: AnyObject) {
+        tripClient.saveTripsToCloud(self)
+    }
+    
+    @IBAction func newTripPressed(sender: AnyObject) {
         let traveller = tripClient.traveller
         createNewTrip(traveller)
         saveTrips()

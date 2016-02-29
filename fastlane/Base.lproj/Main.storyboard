@@ -25,11 +25,18 @@
                                     <constraint firstAttribute="height" constant="44" id="2iL-1C-BSc"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="New Trip" id="w7B-ge-klV">
+                                    <barButtonItem title="New Trip" id="MNR-tA-TnI">
                                         <connections>
-                                            <action selector="newTripPressed:" destination="wLW-38-wrD" id="Icv-5s-wSF"/>
+                                            <action selector="newTripPressed:" destination="wLW-38-wrD" id="kkZ-PH-Wmo"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="gU4-Mu-jIv"/>
+                                    <barButtonItem title="Save to cloud" id="w7B-ge-klV">
+                                        <connections>
+                                            <action selector="saveToCloud:" destination="wLW-38-wrD" id="nzK-ON-bc0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="16" style="plain" systemItem="fixedSpace" id="AK5-pJ-Loz"/>
                                     <barButtonItem title="Logout" id="jc1-Wm-t9y">
                                         <connections>
                                             <action selector="logoutButtonPRessed:" destination="wLW-38-wrD" id="gEE-d3-oHg"/>
@@ -67,6 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cND-Kd-HZK"/>
                     <connections>
+                        <outlet property="saveToCloudButton" destination="w7B-ge-klV" id="dlK-fH-P1q"/>
                         <outlet property="tripsTable" destination="ojn-7K-2G0" id="paD-qv-svE"/>
                     </connections>
                 </viewController>

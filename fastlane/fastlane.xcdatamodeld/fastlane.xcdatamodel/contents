@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15A284" minimumToolsVersion="Automatic">
     <entity name="Traveller" representedClassName=".Traveller" syncable="YES">
+        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="String" minValueString="1" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,7 +12,7 @@
         <relationship name="traveller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Traveller" inverseName="trips" inverseEntity="Traveller" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Traveller" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Traveller" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Trip" positionX="-54" positionY="-9" width="128" height="75"/>
     </elements>
 </model>

@@ -15,6 +15,8 @@ class Traveller: NSManagedObject {
     @NSManaged var id: String
     @NSManaged var name: String!
     @NSManaged var token: String!
+    @NSManaged var accessToken: String!
+    
     @NSManaged var trips: [Trip]!
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -26,7 +28,8 @@ class Traveller: NSManagedObject {
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
         
         id = user.userID
-        token = user.authentication.idToken!
         name = user.profile.name
+        token = user.authentication.idToken!
+        accessToken = user.authentication.accessToken
     }
 }
