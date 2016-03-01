@@ -27,6 +27,7 @@
 		57D38A8F1C827B350043CA34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D38A8E1C827B350043CA34 /* LoginViewController.swift */; };
 		57D38A941C8284780043CA34 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D38A931C8284780043CA34 /* LoginController.swift */; };
 		57D38A961C828C2E0043CA34 /* TripClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D38A951C828C2E0043CA34 /* TripClientController.swift */; };
+		57D988871C8562E000E770E1 /* Lane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D988861C8562E000E770E1 /* Lane.swift */; };
 		57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */; };
 		DB0BF83630245197C7F10AD6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B59ED746B50A2C97E8869294 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		57D38A901C827C520043CA34 /* fastlane-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fastlane-Bridging-Header.h"; sourceTree = "<group>"; };
 		57D38A931C8284780043CA34 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		57D38A951C828C2E0043CA34 /* TripClientController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripClientController.swift; sourceTree = "<group>"; };
+		57D988861C8562E000E770E1 /* Lane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lane.swift; sourceTree = "<group>"; };
 		57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStackManager.swift; sourceTree = "<group>"; };
 		B59ED746B50A2C97E8869294 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA684105651F22BCDB49176 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				5753133E1C7914730069AD41 /* Trip.swift */,
+				57D988861C8562E000E770E1 /* Lane.swift */,
 				575313431C7914C20069AD41 /* Traveller.swift */,
 				5753130F1C784FCA0069AD41 /* fastlane.xcdatamodeld */,
 				57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */,
@@ -411,6 +414,7 @@
 				57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */,
 				575313441C7914C20069AD41 /* Traveller.swift in Sources */,
 				57D38A8F1C827B350043CA34 /* LoginViewController.swift in Sources */,
+				57D988871C8562E000E770E1 /* Lane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

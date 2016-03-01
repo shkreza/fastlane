@@ -173,10 +173,10 @@ class TripClient {
             return
         }
        
-        let str = "{\"kind\": \"storage#bucket\", \"id\": \"travellertrips\"}"
-
-        let data: NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
+//        let str = "{\"kind\": \"storage#bucket\", \"id\": \"travellertrips\"}"
+//        let data: NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
         
+        let data = traveller!.save()
         let token = traveller.accessToken
         
         let headerParams: [String: String] = [
