@@ -25,13 +25,28 @@ class Trip: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init(title: String, context: NSManagedObjectContext) {
+    init(title: String, traveller: Traveller!, context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
         self.title = title
+        self.traveller = traveller
         let _ = Lane(latitude: 1.0, longitude: 2.0, lane: 3, trip: self, context: context)
 //        lanes.append(lane)
+    }
+    
+    init(dic: [String: AnyObject!], traveller: Traveller!, context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+
+        self.title = dic[Keys.TITLE] as! String
+        self.traveller = traveller
+        
+        if let lanesDic = dic[Keys.LANES] as? [[String: AnyObject!]] {
+            for laneDic in lanesDic {
+                let _ = Lane(dic: laneDic, trip: self, context: context)
+            }
+        }
     }
     
     func getLanes() -> [Lane] {

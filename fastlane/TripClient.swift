@@ -164,6 +164,28 @@ class TripClient {
                 
                 let response = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [String: AnyObject]
                 print(response)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.deleteTravellerTrips()
+                    self.createNewTravellerTrips(response)
+                })
+        }
+    }
+    
+    func deleteTravellerTrips() {
+        let fetchRequest = NSFetchRequest(entityName: "Trip")
+        let predicate = NSPredicate(format: "traveller.id == %@", traveller.id)
+        fetchRequest.predicate = predicate
+        let trips = try! sharedContext.executeFetchRequest(fetchRequest) as! [Trip]
+        for trip in trips {
+            sharedContext.deleteObject(trip)
+        }
+        
+        saveContext()
+    }
+    
+    func createNewTravellerTrips(travellerJson: [String: AnyObject!]) {
+        if let traveller = traveller {
+            traveller.loadTrips(travellerJson)
         }
     }
     

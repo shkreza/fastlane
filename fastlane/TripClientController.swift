@@ -14,5 +14,6 @@ extension TripClient {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let action = UIAlertAction(title: title, style: .Default, handler: nil)
         alert.addAction(action)
+        viewController.presentViewController(alert, animated: true, completion: nil)
     }
 }

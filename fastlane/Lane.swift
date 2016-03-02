@@ -38,6 +38,16 @@ class Lane: NSManagedObject {
         self.lane = lane
     }
     
+    init(dic: [String: AnyObject], trip: Trip, context: NSManagedObjectContext?) {
+        let entity = NSEntityDescription.entityForName("Lane", inManagedObjectContext: context!)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        self.trip = trip
+        self.lane = dic[Keys.LANE] as! NSNumber
+        self.latitude = dic[Keys.LATITUDE] as! Double
+        self.longitude = dic[Keys.LONGITUDE] as! Double
+    }
+    
     lazy var coord: CLLocationCoordinate2D = {
         return CLLocationCoordinate2D(latitude: self.latitude as Double, longitude: self.longitude as Double)
     }()

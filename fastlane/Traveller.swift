@@ -77,4 +77,19 @@ class Traveller: NSManagedObject {
         print(obj)
         return data
     }
+    
+    func loadTrips(dic: [String: AnyObject]) -> Bool {
+        guard let id = dic[Keys.ID] as? String where id == self.id else {
+            return false
+        }
+        
+        if let tripDics = dic[Keys.TRIPS] as? [[String: AnyObject!]] {
+            for tripDic in tripDics {
+                let _ = Trip(dic: tripDic, traveller: self, context: self.managedObjectContext!)
+            }
+            return true
+        } else {
+            return false
+        }
+    }
 }
