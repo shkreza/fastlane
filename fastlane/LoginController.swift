@@ -32,7 +32,9 @@ extension LoginViewController: GIDSignInDelegate {
                 return
             }
             
-            self.handlePostLogin(user!)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.handlePostLogin(user!)
+            })
         }
     }
     
@@ -113,6 +115,6 @@ extension LoginViewController: GIDSignInDelegate {
     func presentPostLoginView() {
         let tripSelectorController = storyboard?.instantiateViewControllerWithIdentifier("TripSelectorController") as! TripSelectorController
         tripSelectorController.initFetchTripsResultsController()
-        navigationController?.presentViewController(tripSelectorController, animated: true, completion: nil)
+        navigationController!.pushViewController(tripSelectorController, animated: true)
     }
 }

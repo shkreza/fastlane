@@ -171,6 +171,12 @@ class TripClient {
         }
     }
     
+    func deleteTrip(trip: Trip!) {
+        if let trip = trip {
+            sharedContext.deleteObject(trip)
+        }
+    }
+    
     func deleteTravellerTrips() {
         let fetchRequest = NSFetchRequest(entityName: "Trip")
         let predicate = NSPredicate(format: "traveller.id == %@", traveller.id)

@@ -55,15 +55,49 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripCellID" id="QTq-AS-HOU" customClass="TripCell" customModule="fastlane" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripCellID" id="QTq-AS-HOU" customClass="TripViewCell" customModule="fastlane" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTq-AS-HOU" id="uD7-aR-Snl">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5D-jN-y42">
+                                                    <rect key="frame" x="507" y="8" width="45" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="8fe-1N-16e"/>
+                                                        <constraint firstAttribute="width" constant="45" id="kmB-rS-nHQ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Delete"/>
+                                                    <connections>
+                                                        <action selector="deleteTrip:" destination="QTq-AS-HOU" eventType="touchUpInside" id="aF1-7s-P83"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXU-m5-Ns8">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="70V-Oc-nHX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fXU-m5-Ns8" secondAttribute="bottom" id="DCf-1C-3k4"/>
+                                                <constraint firstItem="e5D-jN-y42" firstAttribute="trailing" secondItem="uD7-aR-Snl" secondAttribute="trailingMargin" id="IcE-hM-Ar3"/>
+                                                <constraint firstItem="fXU-m5-Ns8" firstAttribute="leading" secondItem="uD7-aR-Snl" secondAttribute="leadingMargin" id="Vak-t9-3BR"/>
+                                                <constraint firstItem="e5D-jN-y42" firstAttribute="leading" secondItem="fXU-m5-Ns8" secondAttribute="trailing" id="aJa-05-VSa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="e5D-jN-y42" secondAttribute="bottom" id="mYd-de-5hs"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="tripLabel" destination="fXU-m5-Ns8" id="lKE-9U-KDU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -78,6 +112,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="wiE-Hf-lmj" secondAttribute="trailing" constant="-20" id="u0p-rq-Pqp"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="cND-Kd-HZK"/>
                     <connections>
                         <outlet property="loadFromCloudButton" destination="FDa-Zj-xW1" id="uuK-RR-BrO"/>
@@ -92,7 +127,7 @@
         <!--Trip Map Controller-->
         <scene sceneID="d8z-uL-0Yj">
             <objects>
-                <viewController storyboardIdentifier="TripMap" id="cqO-a5-GHh" customClass="TripMapController" customModule="fastlane" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripMapController" id="cqO-a5-GHh" customClass="TripMapController" customModule="fastlane" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3XR-aW-Vgx"/>
                         <viewControllerLayoutGuide type="bottom" id="B2v-mt-sjV"/>
@@ -105,16 +140,113 @@
                                 <rect key="frame" x="180" y="207" width="240" height="128"/>
                                 <animations/>
                             </mapView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-BE-OnP">
+                                <rect key="frame" x="180" y="551" width="240" height="49"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKB-Ut-661">
+                                        <rect key="frame" x="17" y="8" width="30" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7yo-hy-CAe"/>
+                                            <constraint firstAttribute="width" constant="30" id="85N-ee-Clq"/>
+                                        </constraints>
+                                        <state key="normal" title="1"/>
+                                        <connections>
+                                            <action selector="laneSelected:" destination="cqO-a5-GHh" eventType="touchUpInside" id="m6k-Vg-tfs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGu-9z-RHh">
+                                        <rect key="frame" x="63" y="8" width="30" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Xu1-sQ-IDa"/>
+                                            <constraint firstAttribute="height" constant="30" id="v9O-sf-Ijx"/>
+                                        </constraints>
+                                        <state key="normal" title="2"/>
+                                        <connections>
+                                            <action selector="laneSelected:" destination="cqO-a5-GHh" eventType="touchUpInside" id="fmP-pg-NZ0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJH-Xq-cj7">
+                                        <rect key="frame" x="111" y="8" width="30" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="J5D-Qf-XpA"/>
+                                            <constraint firstAttribute="width" constant="30" id="mKt-c8-zdm"/>
+                                        </constraints>
+                                        <state key="normal" title="3"/>
+                                        <connections>
+                                            <action selector="laneSelected:" destination="cqO-a5-GHh" eventType="touchUpInside" id="20K-Aq-Xf7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-cP-czK">
+                                        <rect key="frame" x="158" y="8" width="30" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ioM-E8-dpi"/>
+                                            <constraint firstAttribute="width" constant="30" id="nTx-37-289"/>
+                                        </constraints>
+                                        <state key="normal" title="4"/>
+                                        <connections>
+                                            <action selector="laneSelected:" destination="cqO-a5-GHh" eventType="touchUpInside" id="hBg-yt-W4O"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9b-Qb-aLj">
+                                        <rect key="frame" x="202" y="8" width="30" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7Qx-ZN-xGF"/>
+                                            <constraint firstAttribute="width" constant="30" id="RfW-yn-jd1"/>
+                                        </constraints>
+                                        <state key="normal" title="5"/>
+                                        <connections>
+                                            <action selector="laneSelected:" destination="cqO-a5-GHh" eventType="touchUpInside" id="QpP-eO-CkG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RJH-Xq-cj7" firstAttribute="leading" secondItem="yGu-9z-RHh" secondAttribute="trailing" constant="10" id="0EV-0Y-vp9"/>
+                                    <constraint firstItem="SKB-Ut-661" firstAttribute="leading" secondItem="Ivy-BE-OnP" secondAttribute="leading" constant="5" id="4n6-x7-Rkj"/>
+                                    <constraint firstAttribute="bottom" secondItem="SKB-Ut-661" secondAttribute="bottom" constant="10" id="7gR-db-rQa"/>
+                                    <constraint firstItem="Y9b-Qb-aLj" firstAttribute="leading" secondItem="ZGa-cP-czK" secondAttribute="trailing" constant="10" id="7tc-ZH-oN1"/>
+                                    <constraint firstAttribute="bottom" secondItem="RJH-Xq-cj7" secondAttribute="bottom" constant="10" id="KiO-d2-Vuw"/>
+                                    <constraint firstAttribute="height" constant="50" id="Obx-yq-Qoc"/>
+                                    <constraint firstItem="ZGa-cP-czK" firstAttribute="leading" secondItem="RJH-Xq-cj7" secondAttribute="trailing" constant="10" id="OiY-c4-sJ7"/>
+                                    <constraint firstAttribute="bottom" secondItem="yGu-9z-RHh" secondAttribute="bottom" constant="10" id="Xpo-XL-ZAe"/>
+                                    <constraint firstItem="yGu-9z-RHh" firstAttribute="leading" secondItem="SKB-Ut-661" secondAttribute="trailing" constant="5" id="egH-du-QSv"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZGa-cP-czK" secondAttribute="bottom" constant="11" id="hQS-ny-vHV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y9b-Qb-aLj" secondAttribute="trailing" constant="5" id="kTu-UI-YHY"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y9b-Qb-aLj" secondAttribute="bottom" constant="10" id="vdb-UO-8rR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lPr-ZR-fml" firstAttribute="leading" secondItem="KDb-cw-qKJ" secondAttribute="leadingMargin" id="2kI-4S-i5x"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lPr-ZR-fml" secondAttribute="trailing" id="Bql-BL-dhN"/>
-                            <constraint firstItem="lPr-ZR-fml" firstAttribute="top" secondItem="3XR-aW-Vgx" secondAttribute="bottom" id="bVh-VM-HaU"/>
+                            <constraint firstItem="lPr-ZR-fml" firstAttribute="leading" secondItem="KDb-cw-qKJ" secondAttribute="leadingMargin" constant="-20" id="2kI-4S-i5x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lPr-ZR-fml" secondAttribute="trailing" constant="-20" id="Bql-BL-dhN"/>
+                            <constraint firstItem="Ivy-BE-OnP" firstAttribute="centerX" secondItem="KDb-cw-qKJ" secondAttribute="centerX" id="Er8-iu-aCR"/>
+                            <constraint firstItem="lPr-ZR-fml" firstAttribute="top" secondItem="3XR-aW-Vgx" secondAttribute="bottom" constant="-20" id="bVh-VM-HaU"/>
+                            <constraint firstItem="B2v-mt-sjV" firstAttribute="top" secondItem="Ivy-BE-OnP" secondAttribute="bottom" id="cCE-MX-1eM"/>
                             <constraint firstItem="B2v-mt-sjV" firstAttribute="top" secondItem="lPr-ZR-fml" secondAttribute="bottom" id="uwP-6d-aYo"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="lane1" destination="SKB-Ut-661" id="I9Z-CA-M0B"/>
+                        <outlet property="lane2" destination="yGu-9z-RHh" id="R7j-TZ-odJ"/>
+                        <outlet property="lane3" destination="RJH-Xq-cj7" id="oif-fs-Xpn"/>
+                        <outlet property="lane4" destination="ZGa-cP-czK" id="Uy3-YS-Ken"/>
+                        <outlet property="lane5" destination="Y9b-Qb-aLj" id="gd5-lM-ITj"/>
+                        <outlet property="map" destination="lPr-ZR-fml" id="cw7-37-2su"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja0-nN-fRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

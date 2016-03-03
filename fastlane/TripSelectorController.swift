@@ -45,14 +45,21 @@ class TripSelectorController: UIViewController {
         DataStackManager.sharedInstance.saveContext()
     }
     
+    func prepLogoutButton() {
+        let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logoutButtonPRessed:")
+        navigationItem.leftBarButtonItem = logoutButton
+    }
+    
     @IBAction func logoutButtonPRessed(sender: AnyObject) {
         logUserOut()
-        self.dismissViewControllerAnimated(true, completion: {
-            self.tripClient.unloadTraveller()
-        })
+        navigationController?.popViewControllerAnimated(true)
+//        navigationController?.dismissViewControllerAnimated(true, completion: {
+//            self.tripClient.unloadTraveller()
+//        })
     }
     
     func logUserOut() {
+        tripClient.unloadTraveller()
         GIDSignIn.sharedInstance().signOut()
     }
     
@@ -73,6 +80,7 @@ class TripSelectorController: UIViewController {
     
     override func viewDidLoad() {
         prepLogoutButton()
+        prepBackButton()
         
         tripsTable.delegate = self
         tripsTable.dataSource = self
@@ -105,9 +113,9 @@ class TripSelectorController: UIViewController {
         return trip
     }
     
-    func prepLogoutButton() {
+    func prepBackButton() {
         let logoutButton = UIBarButtonItem()
-        logoutButton.title = "Logout"
+        logoutButton.title = "Back"
         navigationItem.backBarButtonItem = logoutButton
     }
 }
@@ -127,23 +135,27 @@ extension TripSelectorController: UITableViewDataSource, UITableViewDelegate {
         let sectionInfos = fetchTripsResultController.sections
         let sectionInfo = sectionInfos?[indexPath.section]
         let trip = sectionInfo?.objects?[indexPath.row] as! Trip
-        let cell = (tripsTable.dequeueReusableCellWithIdentifier("TripCellID")) as! TripCell
-        cell.textLabel?.text = trip.title
-        return cell
+        let tripCell = (tripsTable.dequeueReusableCellWithIdentifier("TripCellID")) as! TripViewCell
+        tripCell.tripClient = tripClient
+        tripCell.trip = trip
+        tripCell.tripLabel.text = trip.title
+        return tripCell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == tripsTable {
             let trip = fetchTripsResultController.objectAtIndexPath(indexPath) as! Trip
-            sharedContext.deleteObject(trip)
-            saveTrips()
+            let tripMap = storyboard?.instantiateViewControllerWithIdentifier("TripMapController") as! TripMapController
+            tripMap.tripClient = tripClient
+            tripMap.trip = trip
+            navigationController?.pushViewController(tripMap, animated: true)
         }
     }
 }
 
 extension TripSelectorController: NSFetchedResultsControllerDelegate {
     
-    func updateCell(trip: Trip, cell: TripCell) {
+    func updateCell(trip: Trip, cell: TripViewCell) {
         cell.textLabel?.text = trip.title
     }
     
@@ -161,7 +173,7 @@ extension TripSelectorController: NSFetchedResultsControllerDelegate {
             
         case .Update:
             let trip = anObject as! Trip
-            let cell = tripsTable.cellForRowAtIndexPath(indexPath!) as! TripCell
+            let cell = tripsTable.cellForRowAtIndexPath(indexPath!) as! TripViewCell
             updateCell(trip, cell: cell)
         }
         

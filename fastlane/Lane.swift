@@ -28,6 +28,16 @@ class Lane: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
+    init(coord: CLLocationCoordinate2D, lane: Int, trip: Trip, context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Lane", inManagedObjectContext: context)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        self.latitude = coord.latitude
+        self.longitude = coord.longitude
+        self.trip = trip
+        self.lane = lane
+    }
+    
     init(latitude: Double, longitude: Double, lane: Int, trip: Trip, context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Lane", inManagedObjectContext: context)
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
