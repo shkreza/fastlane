@@ -12,9 +12,11 @@ import MapKit
 class LaneAnnotation: NSObject, MKAnnotation {
     
     let lane: Lane
+    let primaryTrip: Bool
     
-    init(lane: Lane) {
+    init(lane: Lane, primaryTrip: Bool) {
         self.lane = lane
+        self.primaryTrip = primaryTrip
     }
     
     @objc var coordinate: CLLocationCoordinate2D {

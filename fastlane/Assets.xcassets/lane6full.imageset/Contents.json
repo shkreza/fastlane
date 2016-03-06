@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "numbers-4-icon-1.png",
+      "filename" : "numbers-6-filled-icon.png",
       "scale" : "1x"
     },
     {
@@ -11,7 +11,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "numbers-4-icon-2.png",
+      "filename" : "numbers-6-filled-icon-1.png",
       "scale" : "3x"
     }
   ],

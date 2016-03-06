@@ -27,9 +27,15 @@ class LaneAnnotationView: MKAnnotationView {
  
         let laneAnnotation = annotation as! LaneAnnotation
         lane = laneAnnotation.lane
-        let imagename = "lane\(lane.lane)"
-        let image = UIImage(named: imagename)
-        self.image = resizeImage(image!, newWidth: 20)
+        if laneAnnotation.primaryTrip {
+            let imagename = "lane\(lane.lane)full"
+            let image = UIImage(named: imagename)
+            self.image = resizeImage(image!, newWidth: 20)
+        } else {
+            let imagename = "lane\(lane.lane)"
+            let image = UIImage(named: imagename)
+            self.image = resizeImage(image!, newWidth: 20)
+        }
     }
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {

@@ -26,6 +26,7 @@ class Lane: NSManagedObject {
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
+        print("***: \(latitude) - \(longitude)")
     }
     
     init(coord: CLLocationCoordinate2D, lane: Int, trip: Trip, context: NSManagedObjectContext) {
@@ -36,6 +37,7 @@ class Lane: NSManagedObject {
         self.longitude = coord.longitude
         self.trip = trip
         self.lane = lane
+        print("+++: \(latitude) - \(longitude)")
     }
     
     init(latitude: Double, longitude: Double, lane: Int, trip: Trip, context: NSManagedObjectContext) {
@@ -46,7 +48,7 @@ class Lane: NSManagedObject {
         self.longitude = longitude
         self.trip = trip
         self.lane = lane
-        trip.lanes.append(self)
+        print("---: \(latitude) - \(longitude)")
     }
     
     init(dic: [String: AnyObject], trip: Trip, context: NSManagedObjectContext?) {
@@ -57,6 +59,7 @@ class Lane: NSManagedObject {
         self.lane = dic[Keys.LANE] as! NSNumber
         self.latitude = dic[Keys.LATITUDE] as! Double
         self.longitude = dic[Keys.LONGITUDE] as! Double
+        print(">>>: \(latitude) - \(longitude)")
     }
     
     lazy var coord: CLLocationCoordinate2D = {

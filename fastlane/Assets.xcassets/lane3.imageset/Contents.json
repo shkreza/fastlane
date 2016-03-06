@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "lane3@3x.png",
+      "filename" : "numbers-3-icon-1.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +11,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "numbers-3-icon.png",
       "scale" : "3x"
     }
   ],

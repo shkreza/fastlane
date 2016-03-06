@@ -56,27 +56,53 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
         currentLocation = self.locManager.location
         
         initDirections(currentLocation)
+        addExistingPins()
     }
     
     @IBAction func handleLongTap(sender: UILongPressGestureRecognizer) {
-        let loc = sender.locationInView(map)
-        let coord = map.convertPoint(loc, toCoordinateFromView: map)
-        addPin(coord)
+        switch sender.state {
+        case .Ended:
+            let loc = sender.locationInView(map)
+            let coord = map.convertPoint(loc, toCoordinateFromView: map)
+            laneCounter = laneCounter + 1
+            let lane = Lane(coord: coord, lane: laneCounter, trip: trip, context: sharedContext)
+            addPin(lane, primaryTrip: true)
+            
+        default:
+            break
+        }
     }
     
     var laneCounter: Int = 0
     
-    func addPin(coord: CLLocationCoordinate2D) {
-        laneCounter = laneCounter + 1
-        if let trip = trip {
-            let lane = Lane(coord: coord, lane: laneCounter, trip: trip, context: sharedContext)
-            let laneAnnotation = LaneAnnotation(lane: lane)
+    func addPin(lane: Lane, primaryTrip: Bool) {
+        if let _ = trip {
+            let laneAnnotation = LaneAnnotation(lane: lane, primaryTrip: primaryTrip)
             map.addAnnotation(laneAnnotation)
         } else {
-            let lane = Lane(coord: coord, lane: 2, trip: dummyTrip, context: sharedContext)
-            let laneAnnotation = LaneAnnotation(lane: lane)
+            let laneAnnotation = LaneAnnotation(lane: lane, primaryTrip: primaryTrip)
             map.addAnnotation(laneAnnotation)
         }
+    }
+    
+    func addExistingPins() {
+        let tripId = trip.title
+        let currentTripLanesFetchRequest = NSFetchRequest(entityName: "Lane")
+        currentTripLanesFetchRequest.predicate = NSPredicate(format: "trip.title == %@", tripId)
+        let currentTripLanes = try! sharedContext.executeFetchRequest(currentTripLanesFetchRequest) as! [Lane]
+        for lane in currentTripLanes {
+            print("\t\(tripId) == \(lane.trip.title)")
+            addPin(lane, primaryTrip: true)
+        }
+        
+        let nonCrrentTripLanesFetchRequest = NSFetchRequest(entityName: "Lane")
+        nonCrrentTripLanesFetchRequest.predicate = NSPredicate(format: "trip.title <> %@", tripId)
+        let nonCurrentTripLanes = try! sharedContext.executeFetchRequest(nonCrrentTripLanesFetchRequest) as! [Lane]
+        for lane in nonCurrentTripLanes {
+            print("\t\(tripId) <> \(lane.trip.title)")
+            addPin(lane, primaryTrip: false)
+        }
+        
     }
     
     func initDirections(sourceLocation: CLLocation!) {
@@ -159,17 +185,17 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
         let coord = map.centerCoordinate
         if let trip = trip {
             let lane = Lane(coord: coord, lane: lane, trip: trip, context: sharedContext)
-            let annotation = createAnnotation(lane)
+            let annotation = createAnnotation(lane, primaryTrip: true)
             map.addAnnotation(annotation)
         } else {
             let lane = Lane(coord: coord, lane: lane, trip: dummyTrip, context: sharedContext)
-            let annotation = createAnnotation(lane)
+            let annotation = createAnnotation(lane, primaryTrip: true)
             map.addAnnotation(annotation)
         }
     }
     
-    func createAnnotation(lane: Lane) -> MKAnnotation {
-        let annotation = LaneAnnotation(lane: lane)
+    func createAnnotation(lane: Lane, primaryTrip: Bool) -> MKAnnotation {
+        let annotation = LaneAnnotation(lane: lane, primaryTrip: primaryTrip)
         return annotation
     }
 }

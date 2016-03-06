@@ -31,7 +31,7 @@ class Trip: NSManagedObject {
         
         self.title = title
         self.traveller = traveller
-        let _ = Lane(latitude: 1.0, longitude: 2.0, lane: 3, trip: self, context: context)
+//        let _ = Lane(latitude: 1.0, longitude: 2.0, lane: 3, trip: self, context: context)
 //        lanes.append(lane)
     }
     
