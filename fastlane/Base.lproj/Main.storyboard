@@ -79,6 +79,7 @@
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="70V-Oc-nHX"/>
+                                                        <constraint firstAttribute="width" constant="300" id="nfm-ps-uYD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,7 +91,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="fXU-m5-Ns8" secondAttribute="bottom" id="DCf-1C-3k4"/>
                                                 <constraint firstItem="e5D-jN-y42" firstAttribute="trailing" secondItem="uD7-aR-Snl" secondAttribute="trailingMargin" id="IcE-hM-Ar3"/>
                                                 <constraint firstItem="fXU-m5-Ns8" firstAttribute="leading" secondItem="uD7-aR-Snl" secondAttribute="leadingMargin" id="Vak-t9-3BR"/>
-                                                <constraint firstItem="e5D-jN-y42" firstAttribute="leading" secondItem="fXU-m5-Ns8" secondAttribute="trailing" id="aJa-05-VSa"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="e5D-jN-y42" secondAttribute="bottom" id="mYd-de-5hs"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -139,6 +139,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lPr-ZR-fml">
                                 <rect key="frame" x="180" y="207" width="240" height="128"/>
                                 <animations/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="77W-RP-vEx" appends="YES" id="Kgp-XF-fKV"/>
+                                </connections>
                             </mapView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-BE-OnP">
                                 <rect key="frame" x="180" y="551" width="240" height="49"/>
@@ -249,6 +253,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja0-nN-fRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="77W-RP-vEx">
+                    <connections>
+                        <action selector="handleLongTap:" destination="cqO-a5-GHh" id="Xeb-B9-tya"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="329" y="1030"/>
         </scene>

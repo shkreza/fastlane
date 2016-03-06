@@ -11,8 +11,8 @@ import UIKit
 
 extension TripClient {
     func showError(viewController: UIViewController, title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: title, style: .Default, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let action = UIAlertAction(title: title, style: UIAlertActionStyle.Destructive, handler: nil)
         alert.addAction(action)
         viewController.presentViewController(alert, animated: true, completion: nil)
     }

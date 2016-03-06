@@ -29,6 +29,8 @@
 		57D38A961C828C2E0043CA34 /* TripClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D38A951C828C2E0043CA34 /* TripClientController.swift */; };
 		57D988871C8562E000E770E1 /* Lane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D988861C8562E000E770E1 /* Lane.swift */; };
 		57D988891C88022A00E770E1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D988881C88022A00E770E1 /* MapKit.framework */; };
+		57D9888D1C8BF42600E770E1 /* LaneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D9888C1C8BF42600E770E1 /* LaneAnnotation.swift */; };
+		57D9888F1C8BF51A00E770E1 /* LaneAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D9888E1C8BF51900E770E1 /* LaneAnnotationView.swift */; };
 		57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */; };
 		DB0BF83630245197C7F10AD6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B59ED746B50A2C97E8869294 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		57D38A951C828C2E0043CA34 /* TripClientController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripClientController.swift; sourceTree = "<group>"; };
 		57D988861C8562E000E770E1 /* Lane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lane.swift; sourceTree = "<group>"; };
 		57D988881C88022A00E770E1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		57D9888C1C8BF42600E770E1 /* LaneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaneAnnotation.swift; sourceTree = "<group>"; };
+		57D9888E1C8BF51900E770E1 /* LaneAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaneAnnotationView.swift; sourceTree = "<group>"; };
 		57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStackManager.swift; sourceTree = "<group>"; };
 		B59ED746B50A2C97E8869294 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA684105651F22BCDB49176 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				5753130A1C784FCA0069AD41 /* TripMapController.swift */,
+				57D9888C1C8BF42600E770E1 /* LaneAnnotation.swift */,
+				57D9888E1C8BF51900E770E1 /* LaneAnnotationView.swift */,
 				5753133C1C7914290069AD41 /* TripSelectorController.swift */,
 				575313451C7915910069AD41 /* TripViewCell.swift */,
 				57D38A8E1C827B350043CA34 /* LoginViewController.swift */,
@@ -414,7 +420,9 @@
 				575313481C7916210069AD41 /* TripClient.swift in Sources */,
 				575313111C784FCA0069AD41 /* fastlane.xcdatamodeld in Sources */,
 				5753133D1C7914290069AD41 /* TripSelectorController.swift in Sources */,
+				57D9888F1C8BF51A00E770E1 /* LaneAnnotationView.swift in Sources */,
 				57D38A891C7C2C910043CA34 /* TripClientConstants.swift in Sources */,
+				57D9888D1C8BF42600E770E1 /* LaneAnnotation.swift in Sources */,
 				57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */,
 				575313441C7914C20069AD41 /* Traveller.swift in Sources */,
 				57D38A8F1C827B350043CA34 /* LoginViewController.swift in Sources */,

@@ -46,6 +46,7 @@ class Lane: NSManagedObject {
         self.longitude = longitude
         self.trip = trip
         self.lane = lane
+        trip.lanes.append(self)
     }
     
     init(dic: [String: AnyObject], trip: Trip, context: NSManagedObjectContext?) {

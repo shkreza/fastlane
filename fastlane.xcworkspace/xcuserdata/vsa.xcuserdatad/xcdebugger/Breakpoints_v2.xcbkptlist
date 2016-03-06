@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "fastlane/TripSelectorController.swift"
-            timestampString = "478682217.675991"
+            filePath = "fastlane/LaneAnnotationView.swift"
+            timestampString = "478936844.806304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "logoutButtonPRessed(_:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(annotation:reuseIdentifier:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
