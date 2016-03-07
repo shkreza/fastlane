@@ -61,43 +61,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTq-AS-HOU" id="uD7-aR-Snl">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5D-jN-y42">
-                                                    <rect key="frame" x="507" y="8" width="45" height="30"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="8fe-1N-16e"/>
-                                                        <constraint firstAttribute="width" constant="45" id="kmB-rS-nHQ"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Delete"/>
-                                                    <connections>
-                                                        <action selector="deleteTrip:" destination="QTq-AS-HOU" eventType="touchUpInside" id="aF1-7s-P83"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXU-m5-Ns8">
-                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="70V-Oc-nHX"/>
-                                                        <constraint firstAttribute="width" constant="300" id="nfm-ps-uYD"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                             <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="fXU-m5-Ns8" secondAttribute="bottom" id="DCf-1C-3k4"/>
-                                                <constraint firstItem="e5D-jN-y42" firstAttribute="trailing" secondItem="uD7-aR-Snl" secondAttribute="trailingMargin" id="IcE-hM-Ar3"/>
-                                                <constraint firstItem="fXU-m5-Ns8" firstAttribute="leading" secondItem="uD7-aR-Snl" secondAttribute="leadingMargin" id="Vak-t9-3BR"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="e5D-jN-y42" secondAttribute="bottom" id="mYd-de-5hs"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <connections>
-                                            <outlet property="tripLabel" destination="fXU-m5-Ns8" id="lKE-9U-KDU"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

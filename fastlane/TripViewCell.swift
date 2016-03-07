@@ -10,12 +10,6 @@ import Foundation
 
 class TripViewCell: UITableViewCell {
     
-    @IBOutlet weak var tripLabel: UILabel!
     var tripClient: TripClient!
     var trip: Trip!
-    
-    @IBAction func deleteTrip(sender: AnyObject) {
-        tripClient.deleteTrip(trip)
-        tripClient.saveContext()
-    }
 }

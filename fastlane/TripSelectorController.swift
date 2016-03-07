@@ -120,7 +120,7 @@ class TripSelectorController: UIViewController {
     }
 }
 
-extension TripSelectorController: UITableViewDataSource, UITableViewDelegate {
+extension TripSelectorController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let fetchTripsResultController = fetchTripsResultController {
             let sectionInfo = fetchTripsResultController.sections?[section]
@@ -138,7 +138,7 @@ extension TripSelectorController: UITableViewDataSource, UITableViewDelegate {
         let tripCell = (tripsTable.dequeueReusableCellWithIdentifier("TripCellID")) as! TripViewCell
         tripCell.tripClient = tripClient
         tripCell.trip = trip
-        tripCell.tripLabel.text = trip.title
+        tripCell.textLabel?.text = trip.title
         return tripCell
     }
     
@@ -150,6 +150,38 @@ extension TripSelectorController: UITableViewDataSource, UITableViewDelegate {
             tripMap.trip = trip
             navigationController?.pushViewController(tripMap, animated: true)
         }
+    }
+}
+
+extension TripSelectorController: UITableViewDelegate {
+    func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+        return
+    }
+    
+    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+        return
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TripViewCell
+        let cellTrip = cell.trip
+        switch editingStyle {
+        case .Delete:
+            print("Deleting \(cellTrip.title)")
+            sharedContext.deleteObject(cellTrip)
+            try! sharedContext.save()
+            
+        default:
+            break
+        }
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete
+    }
+    
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "Delete trip"
     }
 }
 
