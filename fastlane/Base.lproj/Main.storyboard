@@ -257,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Di1-cN-Rgm" customClass="GIDSignInButton">
-                                <rect key="frame" x="180" y="248" width="240" height="128"/>
+                                <rect key="frame" x="180" y="340" width="240" height="128"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -265,7 +265,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY5-wb-ahp">
-                                <rect key="frame" x="213" y="428" width="174" height="30"/>
+                                <rect key="frame" x="213" y="484" width="174" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IjW-Li-g73"/>
@@ -275,14 +275,47 @@
                                     <action selector="anonymousLoginButtonPressed:" destination="hD2-c0-ZhI" eventType="touchUpInside" id="our-hl-AYN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FastLane" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKz-yY-8kG">
+                                <rect key="frame" x="169" y="72" width="263" height="75"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="39"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Another way to get ahead!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nvt-ek-2op">
+                                <rect key="frame" x="164" y="149" width="273" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-7S-sgV">
+                                <rect key="frame" x="38" y="184" width="516" height="150"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.01201018436" green="0.71240090410000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">We have all wasted time in traffic -- seeing some lanes move faster while we are stuck in slower-moving lanes.  As it turnes out, there are trends that can be observed for traffic patterns in a busy highway. For example, a lane that exists to a not-so busy street lets cars in that lane to go faster than other lanes in the highway. Only if you knew that somehow and could get on that lane ASAP!! -- Of course you need to maneuver back to the main road before the lane exits :) Likewise, an exit to an even busier highway causes the traffic to spill over to the main road. Therefore, lanes farther away from the exit tend to go faster.
+
+FastLane is an app that allows you to record these trends as you pass through traffic so you can choose your lanes wisely the next time around.  Use the Google Sign-in button below to keep your profile stored in the cloud -- you can conveniently access it from any device. Otherwise, use the anonymous login option, if so desired. </mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.012010184357816645" green="0.71240090414988244" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="SKz-yY-8kG" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="0t7-P6-no5"/>
+                            <constraint firstItem="SKz-yY-8kG" firstAttribute="top" secondItem="FYJ-5z-ua6" secondAttribute="bottom" constant="10" id="1S5-2O-M39"/>
+                            <constraint firstItem="mJN-7S-sgV" firstAttribute="top" secondItem="Nvt-ek-2op" secondAttribute="bottom" constant="10" id="813-Et-FKr"/>
+                            <constraint firstItem="Nvt-ek-2op" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="LYd-BK-Jir"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mJN-7S-sgV" secondAttribute="trailing" constant="20" id="Lpn-Vl-qrV"/>
                             <constraint firstItem="oY5-wb-ahp" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="P5p-Xc-zbj"/>
                             <constraint firstItem="Di1-cN-Rgm" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="VTE-mU-I0b"/>
-                            <constraint firstItem="Di1-cN-Rgm" firstAttribute="centerY" secondItem="F95-HS-Pmp" secondAttribute="centerY" id="hDP-RA-N4J"/>
-                            <constraint firstItem="qB1-DF-08A" firstAttribute="top" secondItem="oY5-wb-ahp" secondAttribute="bottom" constant="120" id="y7C-ye-lSi"/>
+                            <constraint firstItem="Di1-cN-Rgm" firstAttribute="top" secondItem="mJN-7S-sgV" secondAttribute="bottom" constant="6" id="VVM-qM-T9O"/>
+                            <constraint firstItem="oY5-wb-ahp" firstAttribute="top" secondItem="Di1-cN-Rgm" secondAttribute="bottom" constant="10" id="cOI-FC-NMu"/>
+                            <constraint firstItem="mJN-7S-sgV" firstAttribute="leading" secondItem="F95-HS-Pmp" secondAttribute="leadingMargin" constant="20" id="o5m-s8-d3I"/>
+                            <constraint firstItem="mJN-7S-sgV" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="rNp-ML-SzN"/>
+                            <constraint firstItem="qB1-DF-08A" firstAttribute="top" secondItem="oY5-wb-ahp" secondAttribute="bottom" constant="30" id="y7C-ye-lSi"/>
+                            <constraint firstItem="Nvt-ek-2op" firstAttribute="top" secondItem="SKz-yY-8kG" secondAttribute="bottom" id="zw8-7c-ot1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WVv-LM-GRY"/>

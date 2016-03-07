@@ -106,7 +106,11 @@ class TripSelectorController: UIViewController {
     
     func createNewTrip(traveller: Traveller!) -> Trip {
         let date = NSDate()
-        let trip = Trip(title: "\(date)", traveller: traveller, context: sharedContext)
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .ShortStyle
+        let dateString = formatter.stringFromDate(date)
+        let trip = Trip(title: "Trip on \(dateString)", traveller: traveller, context: sharedContext)
         if let traveller = traveller {
             trip.traveller = traveller
         }
