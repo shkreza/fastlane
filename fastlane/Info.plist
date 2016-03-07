@@ -49,6 +49,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App uses location to tag lanes</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App uess location to tag lanes</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

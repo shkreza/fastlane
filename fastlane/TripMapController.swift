@@ -51,11 +51,12 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        locManager.requestLocation()
+//        locManager.requestLocation()
         locManager.startUpdatingLocation()
-        currentLocation = self.locManager.location
-        
-        initDirections(currentLocation)
+        currentLocation = locManager.location
+        map.showsUserLocation = true
+        map.setUserTrackingMode(MKUserTrackingMode.FollowWithHeading, animated: true)
+        map.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2D(), 2000, 2000)
         addExistingPins()
     }
     
@@ -86,23 +87,25 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
     }
     
     func addExistingPins() {
-        let tripId = trip.title
         let currentTripLanesFetchRequest = NSFetchRequest(entityName: "Lane")
-        currentTripLanesFetchRequest.predicate = NSPredicate(format: "trip.title == %@", tripId)
+        if let trip = trip {
+            let tripId = trip.title
+            currentTripLanesFetchRequest.predicate = NSPredicate(format: "trip.title == %@", tripId)
+        }
         let currentTripLanes = try! sharedContext.executeFetchRequest(currentTripLanesFetchRequest) as! [Lane]
         for lane in currentTripLanes {
-            print("\t\(tripId) == \(lane.trip.title)")
             addPin(lane, primaryTrip: true)
         }
         
-        let nonCrrentTripLanesFetchRequest = NSFetchRequest(entityName: "Lane")
-        nonCrrentTripLanesFetchRequest.predicate = NSPredicate(format: "trip.title <> %@", tripId)
-        let nonCurrentTripLanes = try! sharedContext.executeFetchRequest(nonCrrentTripLanesFetchRequest) as! [Lane]
-        for lane in nonCurrentTripLanes {
-            print("\t\(tripId) <> \(lane.trip.title)")
-            addPin(lane, primaryTrip: false)
+        if let trip = trip {
+            let tripId = trip.title
+            let nonCrrentTripLanesFetchRequest = NSFetchRequest(entityName: "Lane")
+            nonCrrentTripLanesFetchRequest.predicate = NSPredicate(format: "trip.title <> %@", tripId)
+            let nonCurrentTripLanes = try! sharedContext.executeFetchRequest(nonCrrentTripLanesFetchRequest) as! [Lane]
+            for lane in nonCurrentTripLanes {
+                addPin(lane, primaryTrip: false)
+            }
         }
-        
     }
     
     func initDirections(sourceLocation: CLLocation!) {
@@ -134,11 +137,22 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
     }
     
     func initLocationManager() {
-        locManager.requestAlwaysAuthorization()
-        locManager.requestWhenInUseAuthorization()
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        switch authorizationStatus {
+        case .NotDetermined:
+            locManager.requestAlwaysAuthorization()
+            print("\(CLLocationManager.authorizationStatus().rawValue) vs. \(authorizationStatus.rawValue)")
+            
+        default:
+            break
+        }
+
         if CLLocationManager.locationServicesEnabled() {
             locManager.delegate = self
             locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        } else {
+            print("Location service is not enabled")
+            abort()
         }
     }
     
@@ -147,7 +161,8 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation = locations[locations.endIndex]
+        let endIndex = locations.endIndex
+        let currentLocation = locations[endIndex - 1]
         map.region.center = currentLocation.coordinate
         print("Current location: \(currentLocation)")
     }
