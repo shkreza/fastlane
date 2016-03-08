@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572735A41C8E80C200E0D46C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572735A31C8E80C200E0D46C /* ActivityIndicator.swift */; };
+		572735A61C8E80D900E0D46C /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572735A51C8E80D900E0D46C /* ProgressTracker.swift */; };
 		575313091C784FCA0069AD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575313081C784FCA0069AD41 /* AppDelegate.swift */; };
 		5753130B1C784FCA0069AD41 /* TripMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753130A1C784FCA0069AD41 /* TripMapController.swift */; };
 		5753130E1C784FCA0069AD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5753130C1C784FCA0069AD41 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		357DD52DB6F5D36DB852110D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		572735A31C8E80C200E0D46C /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		572735A51C8E80D900E0D46C /* ProgressTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTracker.swift; sourceTree = "<group>"; };
 		575313051C784FCA0069AD41 /* fastlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastlane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575313081C784FCA0069AD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5753130A1C784FCA0069AD41 /* TripMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapController.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				575313451C7915910069AD41 /* TripViewCell.swift */,
 				57D38A8E1C827B350043CA34 /* LoginViewController.swift */,
 				57D38A951C828C2E0043CA34 /* TripClientController.swift */,
+				572735A31C8E80C200E0D46C /* ActivityIndicator.swift */,
+				572735A51C8E80D900E0D46C /* ProgressTracker.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D38A961C828C2E0043CA34 /* TripClientController.swift in Sources */,
+				572735A61C8E80D900E0D46C /* ProgressTracker.swift in Sources */,
 				575313461C7915910069AD41 /* TripViewCell.swift in Sources */,
 				57D38A941C8284780043CA34 /* LoginController.swift in Sources */,
 				5753133F1C7914730069AD41 /* Trip.swift in Sources */,
@@ -427,6 +434,7 @@
 				575313441C7914C20069AD41 /* Traveller.swift in Sources */,
 				57D38A8F1C827B350043CA34 /* LoginViewController.swift in Sources */,
 				57D988871C8562E000E770E1 /* Lane.swift in Sources */,
+				572735A41C8E80C200E0D46C /* ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

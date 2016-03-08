@@ -132,12 +132,13 @@ class TripClient {
         }
     }
     
-    func loadFromCloud(view: UIViewController) {
+    func loadFromCloud(view: UIViewController, tracker: ProgressTracker) {
         guard let _ = traveller else {
             showError(view, title: "Error", message: "No user is logged in.")
             return
         }
         
+        tracker.progressStarted()
         let token = traveller.accessToken
         
         let headerParams: [String: String] = [
@@ -151,6 +152,7 @@ class TripClient {
                     let errorMessage = error?.description
                     dispatch_async(dispatch_get_main_queue(), {
                         self.showError(view, title: "Save error", message: (errorMessage)!)
+                        tracker.progressStopped()
                     })
                     return
                 }
@@ -158,6 +160,7 @@ class TripClient {
                 guard let _ = data else {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.showError(view, title: "Save error - empty data", message: (error?.description)!)
+                        tracker.progressStopped()
                     })
                     return
                 }
@@ -167,6 +170,7 @@ class TripClient {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.deleteTravellerTrips()
                     self.createNewTravellerTrips(response)
+                    tracker.progressStopped()
                 })
         }
     }
@@ -195,12 +199,13 @@ class TripClient {
         }
     }
     
-    func saveTripsToCloud(view: UIViewController) {
+    func saveTripsToCloud(view: UIViewController, tracker: ProgressTracker) {
         guard let _ = traveller else {
             showError(view, title: "Error", message: "No user is logged in.")
             return
         }
        
+        tracker.progressStarted()
 //        let str = "{\"kind\": \"storage#bucket\", \"id\": \"travellertrips\"}"
 //        let data: NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
         
@@ -227,6 +232,7 @@ class TripClient {
                     let errorMessage = error?.description
                     dispatch_async(dispatch_get_main_queue(), {
                         self.showError(view, title: "Save error", message: (errorMessage)!)
+                        tracker.progressStopped()
                         })
                     return
                 }
@@ -234,12 +240,16 @@ class TripClient {
                 guard let _ = data else {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.showError(view, title: "Save error - empty data", message: (error?.description)!)
+                        tracker.progressStopped()
                         })
                     return
                 }
                 
                 let response = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [String: AnyObject]
                 print(response)
+                dispatch_async(dispatch_get_main_queue(), {
+                    tracker.progressStopped()
+                })
         }
     }
     

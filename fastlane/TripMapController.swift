@@ -12,12 +12,8 @@ import UIKit
 
 class TripMapController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var laneSegments: UISegmentedControl!
     @IBOutlet weak var map: MKMapView!
-    @IBOutlet weak var lane1: UIButton!
-    @IBOutlet weak var lane2: UIButton!
-    @IBOutlet weak var lane3: UIButton!
-    @IBOutlet weak var lane4: UIButton!
-    @IBOutlet weak var lane5: UIButton!
     
     var trip: Trip!
     var locManager = CLLocationManager()
@@ -41,6 +37,19 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
         map.delegate = self
         initLocationManager()
     }
+    
+    @IBAction func laneSelected(sender: AnyObject, forEvent event: UIEvent) {
+        if laneSegments == sender as? NSObject {
+            let index = laneSegments.selectedSegmentIndex
+            
+            recordLane(index + 1)
+            laneSegments.selectedSegmentIndex = -1
+        }
+    }
+    
+    func laneSelected(event: UIControlEvents) {
+        print(event)
+    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -51,6 +60,8 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        laneSegments.selectedSegmentIndex = -1
+        
 //        locManager.requestLocation()
         locManager.startUpdatingLocation()
         currentLocation = locManager.location
@@ -172,29 +183,7 @@ class TripMapController: UIViewController, CLLocationManagerDelegate {
         renderer.strokeColor = UIColor.blueColor()
         return renderer
     }
-    
-    @IBAction func laneSelected(sender: UIButton) {
-        switch sender {
-        case lane1:
-            recordLane(1)
-            
-        case lane2:
-            recordLane(2)
-            
-        case lane3:
-            recordLane(3)
-            
-        case lane4:
-            recordLane(4)
-            
-        case lane5:
-            recordLane(5)
-            
-        default:
-            return
-        }
-    }
-    
+
     func recordLane(lane: Int) {
         print(lane)
         let coord = map.centerCoordinate

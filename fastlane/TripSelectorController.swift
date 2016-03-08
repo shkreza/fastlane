@@ -14,6 +14,7 @@ import UIKit
 class TripSelectorController: UIViewController {
     
     @IBOutlet weak var tripsTable: UITableView!
+    @IBOutlet weak var activityIndicator: ActivityIndicator!
     
     var fetchTripsResultController: NSFetchedResultsController!
     
@@ -91,11 +92,11 @@ class TripSelectorController: UIViewController {
     }
     
     @IBAction func loadFromCloud(sender: AnyObject) {
-        tripClient.loadFromCloud(self)
+        tripClient.loadFromCloud(self, tracker: activityIndicator)
     }
 
     @IBAction func saveToCloud(sender: AnyObject) {
-        tripClient.saveTripsToCloud(self)
+        tripClient.saveTripsToCloud(self, tracker: activityIndicator)
     }
     
     @IBAction func newTripPressed(sender: AnyObject) {
