@@ -4,7 +4,8 @@ We have all wasted time in traffic -- seeing some lanes move faster while we are
 
 FastLane is an app that allows you to record these trends as you pass through traffic so you can choose your lanes wisely the next time around.
 
-To build from source code run: `pod install`
+### Build from source
+To build from source code install [_CocoaPods_](https://cocoapods.org/) and run: `pod install`
 
 ### Login page
 This page allows you to login either anonymously or using your Google account. If you choose to use Google login, your trip information will also be saved in the cloud and you can access it from any device. | <img src="https://github.com/shkreza/fastlane/blob/master/README.md.files/coverpage.png" width="500">
