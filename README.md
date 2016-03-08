@@ -7,13 +7,13 @@ FastLane is an app that allows you to record these trends as you pass through tr
 To build from source code run: `pod install`
 
 ### Login page
-This page allows you to login either anonymously or using your Google account. If you choose to use Google login, your trip information will also be saved in the cloud and you can access it from any device.
-![alt text](https://github.com/shkreza/fastlane/blob/master/README.md.files/coverpage.png "Login page.")
+This page allows you to login either anonymously or using your Google account. If you choose to use Google login, your trip information will also be saved in the cloud and you can access it from any device. | <img src="https://github.com/shkreza/fastlane/blob/master/README.md.files/coverpage.png" width="500">
+:---|---
 
 ### Trips page
-You can see your trips history and create new ones. You also have the option of loading your trips from Google cloud storage or storing them so they are accessible from other devices. Regardless of storing in Google, you trip information are all persisted on your current device. You can also swipe to left to delete individual trips.
-![alt text](https://github.com/shkreza/fastlane/blob/master/README.md.files/tripspage.png "Trips page.")
+You can see your trips history and create new ones. You also have the option of loading your trips from Google cloud storage or storing them so they are accessible from other devices. Regardless of storing in Google, you trip information are all persisted on your current device. You can also swipe to left to delete individual trips. | <img src="https://github.com/shkreza/fastlane/blob/master/README.md.files/tripspage.png" width="500">
+:---|---
 
 ### Map Page
-You can view your current location (cruising along the highway) and tag the fastest-going lanes. Your current trip's lane tags will show in filled numbers but your previous trips' lane tags show in hollow numbers.
-![alt text](https://github.com/shkreza/fastlane/blob/master/README.md.files/mappage.png "Map page.")
+You can view your current location (cruising along the highway) and tag the fastest-going lanes. Your current trip's lane tags will show in filled numbers but your previous trips' lane tags show in hollow numbers. | <img src="https://github.com/shkreza/fastlane/blob/master/README.md.files/mappage.png" width="500">
+:---|---
