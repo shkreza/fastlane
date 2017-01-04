@@ -24,41 +24,41 @@ class Lane: NSManagedObject {
     
     @NSManaged var trip: Trip!
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
         print("***: \(latitude) - \(longitude)")
     }
     
     init(coord: CLLocationCoordinate2D, lane: Int, trip: Trip, context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName("Lane", inManagedObjectContext: context)
-        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Lane", in: context)
+        super.init(entity: entity!, insertInto: context)
         
-        self.latitude = coord.latitude
-        self.longitude = coord.longitude
+        self.latitude = coord.latitude as NSNumber!
+        self.longitude = coord.longitude as NSNumber!
         self.trip = trip
-        self.lane = lane
+        self.lane = lane as NSNumber!
         print("+++: \(latitude) - \(longitude)")
     }
     
     init(latitude: Double, longitude: Double, lane: Int, trip: Trip, context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName("Lane", inManagedObjectContext: context)
-        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Lane", in: context)
+        super.init(entity: entity!, insertInto: context)
         
-        self.latitude = latitude
-        self.longitude = longitude
+        self.latitude = latitude as NSNumber!
+        self.longitude = longitude as NSNumber!
         self.trip = trip
-        self.lane = lane
+        self.lane = lane as NSNumber!
         print("---: \(latitude) - \(longitude)")
     }
     
     init(dic: [String: AnyObject], trip: Trip, context: NSManagedObjectContext?) {
-        let entity = NSEntityDescription.entityForName("Lane", inManagedObjectContext: context!)
-        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Lane", in: context!)
+        super.init(entity: entity!, insertInto: context)
         
         self.trip = trip
         self.lane = dic[Keys.LANE] as! NSNumber
-        self.latitude = dic[Keys.LATITUDE] as! Double
-        self.longitude = dic[Keys.LONGITUDE] as! Double
+        self.latitude = dic[Keys.LATITUDE] as! Double as NSNumber!
+        self.longitude = dic[Keys.LONGITUDE] as! Double as NSNumber!
         print(">>>: \(latitude) - \(longitude)")
     }
     
@@ -66,7 +66,7 @@ class Lane: NSManagedObject {
         return CLLocationCoordinate2D(latitude: self.latitude as Double, longitude: self.longitude as Double)
     }()
     
-    func saveAsDictionary() -> [String: AnyObject!] {
+    func saveAsDictionary() -> [String: AnyObject?] {
         let dic = [
             Keys.LANE: lane,
             Keys.LATITUDE: latitude,

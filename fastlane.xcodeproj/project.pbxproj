@@ -34,7 +34,7 @@
 		57D9888D1C8BF42600E770E1 /* LaneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D9888C1C8BF42600E770E1 /* LaneAnnotation.swift */; };
 		57D9888F1C8BF51A00E770E1 /* LaneAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D9888E1C8BF51900E770E1 /* LaneAnnotationView.swift */; };
 		57F9E3CE1C7AC6B300B1DCB0 /* DataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */; };
-		DB0BF83630245197C7F10AD6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B59ED746B50A2C97E8869294 /* libPods.a */; };
+		D36D1DB849F89681FC15945A /* libPods-fastlane.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2759256C2D4063AD553C26 /* libPods-fastlane.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		357DD52DB6F5D36DB852110D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		45E46BFC06B677D7E80AE7BD /* Pods-fastlane.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastlane.release.xcconfig"; path = "Pods/Target Support Files/Pods-fastlane/Pods-fastlane.release.xcconfig"; sourceTree = "<group>"; };
 		572735A31C8E80C200E0D46C /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		572735A51C8E80D900E0D46C /* ProgressTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTracker.swift; sourceTree = "<group>"; };
 		575313051C784FCA0069AD41 /* fastlane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastlane.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,8 +88,8 @@
 		57D9888C1C8BF42600E770E1 /* LaneAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaneAnnotation.swift; sourceTree = "<group>"; };
 		57D9888E1C8BF51900E770E1 /* LaneAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaneAnnotationView.swift; sourceTree = "<group>"; };
 		57F9E3CD1C7AC6B300B1DCB0 /* DataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStackManager.swift; sourceTree = "<group>"; };
-		B59ED746B50A2C97E8869294 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBA684105651F22BCDB49176 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9A2759256C2D4063AD553C26 /* libPods-fastlane.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fastlane.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A78095E3170CCF4BD6231D6B /* Pods-fastlane.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastlane.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fastlane/Pods-fastlane.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D988891C88022A00E770E1 /* MapKit.framework in Frameworks */,
-				DB0BF83630245197C7F10AD6 /* libPods.a in Frameworks */,
+				D36D1DB849F89681FC15945A /* libPods-fastlane.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D2B9D5D4EDEE26503D09E1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A78095E3170CCF4BD6231D6B /* Pods-fastlane.debug.xcconfig */,
+				45E46BFC06B677D7E80AE7BD /* Pods-fastlane.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		575312FC1C784FCA0069AD41 = {
 			isa = PBXGroup;
 			children = (
@@ -126,8 +135,8 @@
 				5753131F1C784FCA0069AD41 /* fastlaneTests */,
 				5753132A1C784FCA0069AD41 /* fastlaneUITests */,
 				575313061C784FCA0069AD41 /* Products */,
-				FF4E9309A5EFCDD934926F87 /* Pods */,
 				B325549BBE161D3D6CBEF878 /* Frameworks */,
+				1D2B9D5D4EDEE26503D09E1E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,18 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				57D988881C88022A00E770E1 /* MapKit.framework */,
-				B59ED746B50A2C97E8869294 /* libPods.a */,
+				9A2759256C2D4063AD553C26 /* libPods-fastlane.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FF4E9309A5EFCDD934926F87 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CBA684105651F22BCDB49176 /* Pods.debug.xcconfig */,
-				357DD52DB6F5D36DB852110D /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,12 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 575313301C784FCA0069AD41 /* Build configuration list for PBXNativeTarget "fastlane" */;
 			buildPhases = (
-				086DDA076969F1D1FAFA731A /* Check Pods Manifest.lock */,
+				1B4045157FF3F9A4DFA286E1 /* [CP] Check Pods Manifest.lock */,
 				575313011C784FCA0069AD41 /* Sources */,
 				575313021C784FCA0069AD41 /* Frameworks */,
 				575313031C784FCA0069AD41 /* Resources */,
-				1C0D4BF089F099C9F8DA9D1B /* Embed Pods Frameworks */,
-				9630AB93FA2E5B77F03984AC /* Copy Pods Resources */,
+				746F8DB1E9E3D119FB063E20 /* [CP] Embed Pods Frameworks */,
+				7C90C5FBAE07458154FC77D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,13 +303,16 @@
 				TargetAttributes = {
 					575313041C784FCA0069AD41 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0820;
 					};
 					5753131B1C784FCA0069AD41 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 575313041C784FCA0069AD41;
 					};
 					575313261C784FCA0069AD41 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 575313041C784FCA0069AD41;
 					};
 				};
@@ -365,49 +368,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		086DDA076969F1D1FAFA731A /* Check Pods Manifest.lock */ = {
+		1B4045157FF3F9A4DFA286E1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		1C0D4BF089F099C9F8DA9D1B /* Embed Pods Frameworks */ = {
+		746F8DB1E9E3D119FB063E20 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fastlane/Pods-fastlane-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9630AB93FA2E5B77F03984AC /* Copy Pods Resources */ = {
+		7C90C5FBAE07458154FC77D0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fastlane/Pods-fastlane-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -572,7 +575,7 @@
 		};
 		575313311C784FCA0069AD41 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBA684105651F22BCDB49176 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A78095E3170CCF4BD6231D6B /* Pods-fastlane.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -582,12 +585,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "fastlane/fastlane-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		575313321C784FCA0069AD41 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 357DD52DB6F5D36DB852110D /* Pods.release.xcconfig */;
+			baseConfigurationReference = 45E46BFC06B677D7E80AE7BD /* Pods-fastlane.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -596,6 +600,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shkreza.fastlane.SignIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "fastlane/fastlane-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -607,6 +612,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shkreza.fastlaneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fastlane.app/fastlane";
 			};
 			name = Debug;
@@ -619,6 +625,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shkreza.fastlaneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fastlane.app/fastlane";
 			};
 			name = Release;
@@ -630,6 +637,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shkreza.fastlaneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = fastlane;
 				USES_XCTRUNNER = YES;
 			};
@@ -642,6 +650,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shkreza.fastlaneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = fastlane;
 				USES_XCTRUNNER = YES;
 			};

@@ -21,13 +21,13 @@ class Trip: NSManagedObject {
     @NSManaged var traveller: Traveller!
     @NSManaged var lanes: [Lane]!
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     
     init(title: String, traveller: Traveller!, context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Trip", in: context)!
+        super.init(entity: entity, insertInto: context)
         
         self.title = title
         self.traveller = traveller
@@ -35,47 +35,47 @@ class Trip: NSManagedObject {
 //        lanes.append(lane)
     }
     
-    init(dic: [String: AnyObject!], traveller: Traveller!, context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    init(dic: [String: AnyObject?], traveller: Traveller!, context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entity(forEntityName: "Trip", in: context)!
+        super.init(entity: entity, insertInto: context)
 
         self.title = dic[Keys.TITLE] as! String
         self.traveller = traveller
         
-        if let lanesDic = dic[Keys.LANES] as? [[String: AnyObject!]] {
+        if let lanesDic = dic[Keys.LANES] as? [[String: AnyObject?]] {
             for laneDic in lanesDic {
-                let _ = Lane(dic: laneDic, trip: self, context: context)
+                let _ = Lane(dic: laneDic as [String : AnyObject], trip: self, context: context)
             }
         }
     }
     
     func getLanes() -> [Lane] {
-        let fetchRequest = NSFetchRequest(entityName: "Lane")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Lane")
         let predicate = NSPredicate(format: "trip.title == %@", title)
         fetchRequest.predicate = predicate
-        let results = try! managedObjectContext!.executeFetchRequest(fetchRequest)
+        let results = try! managedObjectContext!.fetch(fetchRequest)
         return results as! [Lane]
     }
     
-    func saveAsDictionary() -> [String: AnyObject!] {
+    func saveAsDictionary() -> [String: AnyObject?] {
         var lanesAsDic = [[String: AnyObject!]]()
         for lane in getLanes() {
             let laneAdDic = lane.saveAsDictionary()
             lanesAsDic.append(laneAdDic)
         }
         
-        let dic: [String: AnyObject!] = [
-            Keys.TITLE: title,
-            Keys.LANES: lanesAsDic
+        let dic: [String: AnyObject?] = [
+            Keys.TITLE: title as ImplicitlyUnwrappedOptional<AnyObject>,
+            Keys.LANES: lanesAsDic as Optional<AnyObject>
         ]
         
         return dic
     }
 
-    func save() -> NSData {
+    func save() -> Data {
         let dic = saveAsDictionary()
-        let data = try! NSJSONSerialization.dataWithJSONObject(dic, options: .PrettyPrinted)
-        let obj = try! NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+        let data = try! JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+        let obj = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
         print(obj)
         return data
     }

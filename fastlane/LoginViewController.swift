@@ -29,17 +29,17 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/devstorage.read_write")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         activityTracker.stopAnimating()
     }
     
-    @IBAction func anonymousLoginButtonPressed(sender: AnyObject) {
+    @IBAction func anonymousLoginButtonPressed(_ sender: AnyObject) {
         handlePostLogin(nil)
     }
     
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+    func signInWillDispatch(_ signIn: GIDSignIn!, error: NSError!) {
         activityTracker.startAnimating()
         return
     }

@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7sF-4y-CTu">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sF-4y-CTu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Trip Selector Controller-->
@@ -15,12 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="m82-N3-mGK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="v9J-Gr-8oK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiE-Hf-lmj">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <animations/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiE-Hf-lmj">
+                                <rect key="frame" x="-1.3181507931763008" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2iL-1C-BSc"/>
                                 </constraints>
@@ -44,39 +47,34 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oLQ-BM-A7G" customClass="ActivityIndicator" customModule="fastlane" customModuleProvider="target">
+                                <rect key="frame" x="560" y="568" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.125109779" green="0.55818047630000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ojn-7K-2G0">
-                                <rect key="frame" x="20" y="44" width="560" height="512"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="65" width="343" height="536"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripCellID" id="QTq-AS-HOU" customClass="TripViewCell" customModule="fastlane" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTq-AS-HOU" id="uD7-aR-Snl">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oLQ-BM-A7G" customClass="ActivityIndicator" customModule="fastlane" customModuleProvider="target">
-                                <rect key="frame" x="560" y="568" width="20" height="20"/>
-                                <animations/>
-                                <color key="tintColor" red="0.125109779" green="0.55818047630000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ojn-7K-2G0" firstAttribute="trailing" secondItem="v9J-Gr-8oK" secondAttribute="trailingMargin" constant="-20" id="4WY-fd-x6W"/>
-                            <constraint firstItem="m82-N3-mGK" firstAttribute="top" secondItem="wiE-Hf-lmj" secondAttribute="bottom" id="EED-FX-y96"/>
-                            <constraint firstItem="wiE-Hf-lmj" firstAttribute="leading" secondItem="v9J-Gr-8oK" secondAttribute="leadingMargin" constant="-20" id="FlO-A7-xdv"/>
-                            <constraint firstItem="m82-N3-mGK" firstAttribute="top" secondItem="oLQ-BM-A7G" secondAttribute="bottom" constant="12" id="GwR-LL-jbX"/>
-                            <constraint firstItem="ojn-7K-2G0" firstAttribute="leading" secondItem="v9J-Gr-8oK" secondAttribute="leadingMargin" constant="-20" id="Lfo-w4-764"/>
-                            <constraint firstItem="oLQ-BM-A7G" firstAttribute="trailing" secondItem="v9J-Gr-8oK" secondAttribute="trailingMargin" id="rc6-q7-gXg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wiE-Hf-lmj" secondAttribute="trailing" constant="-20" id="u0p-rq-Pqp"/>
+                            <constraint firstItem="wiE-Hf-lmj" firstAttribute="width" secondItem="v9J-Gr-8oK" secondAttribute="width" id="3tc-hd-BYA"/>
+                            <constraint firstItem="wiE-Hf-lmj" firstAttribute="centerX" secondItem="v9J-Gr-8oK" secondAttribute="centerX" id="Bpj-l5-zrE"/>
+                            <constraint firstItem="ojn-7K-2G0" firstAttribute="top" secondItem="O46-fR-Khl" secondAttribute="bottom" id="Nta-Cx-L26"/>
+                            <constraint firstItem="ojn-7K-2G0" firstAttribute="height" secondItem="v9J-Gr-8oK" secondAttribute="height" constant="-44" id="VNK-Bw-tq5"/>
+                            <constraint firstItem="ojn-7K-2G0" firstAttribute="width" secondItem="v9J-Gr-8oK" secondAttribute="width" id="bMz-Nk-hve"/>
+                            <constraint firstItem="ojn-7K-2G0" firstAttribute="bottom" secondItem="wiE-Hf-lmj" secondAttribute="top" id="jyd-Ut-QJq"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -90,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guF-jC-Ac2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="341"/>
+            <point key="canvasLocation" x="328.80000000000001" y="340.47976011994007"/>
         </scene>
         <!--Trip Map Controller-->
         <scene sceneID="d8z-uL-0Yj">
@@ -101,20 +99,11 @@
                         <viewControllerLayoutGuide type="bottom" id="B2v-mt-sjV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KDb-cw-qKJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPr-ZR-fml">
-                                <rect key="frame" x="180" y="207" width="240" height="128"/>
-                                <animations/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="77W-RP-vEx" appends="YES" id="Kgp-XF-fKV"/>
-                                </connections>
-                            </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bCp-PQ-Sss">
                                 <rect key="frame" x="219" y="557" width="174" height="29"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="seN-kK-eok"/>
                                 </constraints>
@@ -131,14 +120,19 @@
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select fastest lane (count left to right)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFE-PF-cvF">
                                 <rect key="frame" x="101" y="535" width="368" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.41107772435897438" green="0.41107772435897438" blue="0.41107772435897438" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.41107772435897438" green="0.41107772435897438" blue="0.41107772435897438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPr-ZR-fml">
+                                <rect key="frame" x="67" y="203" width="240" height="128"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="77W-RP-vEx" appends="YES" id="Kgp-XF-fKV"/>
+                                </connections>
+                            </mapView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bCp-PQ-Sss" firstAttribute="top" secondItem="OFE-PF-cvF" secondAttribute="bottom" constant="1" id="2Ck-wu-KLC"/>
                             <constraint firstItem="lPr-ZR-fml" firstAttribute="leading" secondItem="KDb-cw-qKJ" secondAttribute="leadingMargin" constant="-20" id="2kI-4S-i5x"/>
@@ -171,10 +165,9 @@
         <scene sceneID="LkO-8A-AqQ">
             <objects>
                 <navigationController id="7sF-4y-CTu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5wh-XW-9MT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5wh-XW-9MT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="hD2-c0-ZhI" kind="relationship" relationship="rootViewController" id="xLI-Xb-mWV"/>
@@ -193,20 +186,18 @@
                         <viewControllerLayoutGuide type="bottom" id="qB1-DF-08A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="F95-HS-Pmp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Di1-cN-Rgm" customClass="GIDSignInButton">
                                 <rect key="frame" x="180" y="340" width="240" height="128"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="SvC-6v-eAF"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY5-wb-ahp">
                                 <rect key="frame" x="213" y="484" width="174" height="30"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IjW-Li-g73"/>
                                 </constraints>
@@ -217,22 +208,19 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FastLane" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKz-yY-8kG">
                                 <rect key="frame" x="169" y="72" width="263" height="75"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="39"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Another way to get ahead!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nvt-ek-2op">
                                 <rect key="frame" x="164" y="149" width="273" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-7S-sgV">
                                 <rect key="frame" x="38" y="184" width="516" height="150"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.01201018436" green="0.71240090410000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.01201018436" green="0.71240090410000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">We have all wasted time in traffic -- seeing some lanes move faster while we are stuck in slower-moving lanes.  As it turnes out, there are trends that can be observed for traffic patterns in a busy highway. For example, a lane that exists to a not-so busy street lets cars in that lane to go faster than other lanes in the highway. Only if you knew that somehow and could get on that lane ASAP!! -- Of course you need to maneuver back to the main road before the lane exits :) Likewise, an exit to an even busier highway causes the traffic to spill over to the main road. Therefore, lanes farther away from the exit tend to go faster.
 
 FastLane is an app that allows you to record these trends as you pass through traffic so you can choose your lanes wisely the next time around.  Use the Google Sign-in button below to keep your profile stored in the cloud -- you can conveniently access it from any device. Otherwise, use the anonymous login option, if so desired. </string>
@@ -241,12 +229,10 @@ FastLane is an app that allows you to record these trends as you pass through tr
                             </textView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="VAl-KF-h3a" customClass="ActivityIndicator" customModule="fastlane" customModuleProvider="target">
                                 <rect key="frame" x="290" y="531" width="20" height="20"/>
-                                <animations/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" red="0.012010184357816645" green="0.71240090414988244" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.012010184357816645" green="0.71240090414988244" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SKz-yY-8kG" firstAttribute="centerX" secondItem="F95-HS-Pmp" secondAttribute="centerX" id="0t7-P6-no5"/>
                             <constraint firstItem="SKz-yY-8kG" firstAttribute="top" secondItem="FYJ-5z-ua6" secondAttribute="bottom" constant="10" id="1S5-2O-M39"/>

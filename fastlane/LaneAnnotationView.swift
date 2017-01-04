@@ -18,9 +18,9 @@ class LaneAnnotationView: MKAnnotationView {
         super.init(coder: aDecoder)!
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//    }
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -38,15 +38,15 @@ class LaneAnnotationView: MKAnnotationView {
         }
     }
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    func resizeImage(_ image: UIImage, newWidth: CGFloat) -> UIImage {
         
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
 }

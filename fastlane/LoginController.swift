@@ -11,7 +11,7 @@ import Google
 
 extension LoginViewController: GIDSignInDelegate {
     
-    @objc func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+    @objc public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         guard error == nil else {
             let message = "Sign in failed: \(error)"
             tripClient.showError(self, title: "Error", message: message)
@@ -32,29 +32,28 @@ extension LoginViewController: GIDSignInDelegate {
                 return
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.handlePostLogin(user!)
             })
         }
     }
     
-    @objc func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-        withError error: NSError!) {
-            // Perform any operations when the user disconnects from app here.
+    @objc func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
     }
     
-    func verifyUserToken(user: GIDGoogleUser?, completionHandler: (user: GIDGoogleUser?, error: NSError?)->Void) {
+    func verifyUserToken(_ user: GIDGoogleUser?, completionHandler: @escaping (_ user: GIDGoogleUser?, _ error: NSError?)->Void) {
         guard let _ = user else {
             let userInfo = [NSLocalizedDescriptionKey: "Invalid user."]
             let error = NSError(domain: "VerifyUserToken", code: 1, userInfo: userInfo)
-            completionHandler(user: nil, error: error)
+            completionHandler(nil, error)
             return
         }
 
         guard let _ = user!.authentication.idToken else {
             let userInfo = [NSLocalizedDescriptionKey: "Invalid user id token."]
             let error = NSError(domain: "VerifyUserToken", code: 2, userInfo: userInfo)
-            completionHandler(user: nil, error: error)
+            completionHandler(nil, error)
             return
         }
         
@@ -70,31 +69,31 @@ extension LoginViewController: GIDSignInDelegate {
             (error, data) in
             
             guard error == nil else {
-                completionHandler(user: nil, error: error)
+                completionHandler(nil, error)
                 return
             }
             
             do {
-                let resposne = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [String: AnyObject!]
-                guard let sub = resposne[TripClientConstants.GoogleResponseKeys.SUB] as? String where sub == user!.userID else {
+                let resposne = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: AnyObject?]
+                guard let sub = resposne[TripClientConstants.GoogleResponseKeys.SUB] as? String, sub == user!.userID else {
                     let userInfo = [NSLocalizedDescriptionKey: "Invalid user id validation: \(user!.userID) vs \(resposne[TripClientConstants.GoogleResponseKeys.SUB])."]
                     let error = NSError(domain: "VerifyUserToken", code: 3, userInfo: userInfo)
-                    completionHandler(user: nil, error: error)
+                    completionHandler(nil, error)
                     return
                 }
                 
-                completionHandler(user: user, error: nil)
+                completionHandler(user, nil)
                 return
             } catch let jsonError {
                 let userInfo = [NSLocalizedDescriptionKey: "Invalid json response: \(jsonError)."]
                 let error = NSError(domain: "VerifyUserToken", code: 4, userInfo: userInfo)
-                completionHandler(user: nil, error: error)
+                completionHandler(nil, error)
                 return
             }
         }
     }
     
-    func handlePostLogin(user: GIDGoogleUser!) {
+    func handlePostLogin(_ user: GIDGoogleUser!) {
         if let user = user {
             print("User \(user.profile.name) has logged in: \(user.userID)")
             let userId = user.userID                  // For client-side use only!
@@ -113,7 +112,7 @@ extension LoginViewController: GIDSignInDelegate {
     }
     
     func presentPostLoginView() {
-        let tripSelectorController = storyboard?.instantiateViewControllerWithIdentifier("TripSelectorController") as! TripSelectorController
+        let tripSelectorController = storyboard?.instantiateViewController(withIdentifier: "TripSelectorController") as! TripSelectorController
         tripSelectorController.initFetchTripsResultsController()
         navigationController!.pushViewController(tripSelectorController, animated: true)
     }

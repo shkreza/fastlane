@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TripClient.(loadFromCloud(UIViewController, tracker : ProgressTracker) -&gt; ()).(closure #1):TripClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "print(response[&quot;trips&quot;])">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TripClient.loadFromCloud(UIViewController, tracker : ProgressTracker) -&gt; ():TripClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TripClient.(loadFromCloud(UIViewController, tracker : ProgressTracker) -&gt; ()).(closure #1).(closure #3):TripClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "print(response[&quot;trips&quot;]?.count)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TripSelectorController.controller(NSFetchedResultsController&lt;NSFetchRequestResult&gt;, didChange : Any, at : IndexPath?, for : NSFetchedResultsChangeType, newIndexPath : IndexPath?) -&gt; ():TripSelectorController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Traveller.loadTrips([String : AnyObject]) -&gt; Bool:Traveller.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TripSelectorController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:TripSelectorController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "print(trip)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

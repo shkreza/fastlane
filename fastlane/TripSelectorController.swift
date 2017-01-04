@@ -16,7 +16,7 @@ class TripSelectorController: UIViewController {
     @IBOutlet weak var tripsTable: UITableView!
     @IBOutlet weak var activityIndicator: ActivityIndicator!
     
-    var fetchTripsResultController: NSFetchedResultsController!
+    var fetchTripsResultController: NSFetchedResultsController<NSFetchRequestResult>!
     
     lazy var sharedContext: NSManagedObjectContext = {
         return DataStackManager.sharedInstance.managedObjectContext
@@ -27,7 +27,7 @@ class TripSelectorController: UIViewController {
     }()
     
     func initFetchTripsResultsController() {
-        let fetchRequest = NSFetchRequest(entityName: "Trip")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Trip")
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         if let traveller = self.tripClient.traveller {
@@ -47,13 +47,13 @@ class TripSelectorController: UIViewController {
     }
     
     func prepLogoutButton() {
-        let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "logoutButtonPRessed:")
+        let logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TripSelectorController.logoutButtonPRessed(_:)))
         navigationItem.leftBarButtonItem = logoutButton
     }
     
-    @IBAction func logoutButtonPRessed(sender: AnyObject) {
+    @IBAction func logoutButtonPRessed(_ sender: AnyObject) {
         logUserOut()
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
 //        navigationController?.dismissViewControllerAnimated(true, completion: {
 //            self.tripClient.unloadTraveller()
 //        })
@@ -67,15 +67,15 @@ class TripSelectorController: UIViewController {
     @IBOutlet weak var loadFromCloudButton: UIBarButtonItem!
     @IBOutlet weak var saveToCloudButton: UIBarButtonItem!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let _ = tripClient.traveller {
-            saveToCloudButton.enabled = true
-            loadFromCloudButton.enabled = true
+            saveToCloudButton.isEnabled = true
+            loadFromCloudButton.isEnabled = true
         } else {
-            saveToCloudButton.enabled = false
-            loadFromCloudButton.enabled = false
+            saveToCloudButton.isEnabled = false
+            loadFromCloudButton.isEnabled = false
         }
     }
     
@@ -87,30 +87,30 @@ class TripSelectorController: UIViewController {
         tripsTable.dataSource = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    @IBAction func loadFromCloud(sender: AnyObject) {
+    @IBAction func loadFromCloud(_ sender: AnyObject) {
         tripClient.loadFromCloud(self, tracker: activityIndicator)
     }
 
-    @IBAction func saveToCloud(sender: AnyObject) {
+    @IBAction func saveToCloud(_ sender: AnyObject) {
         tripClient.saveTripsToCloud(self, tracker: activityIndicator)
     }
     
-    @IBAction func newTripPressed(sender: AnyObject) {
+    @IBAction func newTripPressed(_ sender: AnyObject) {
         let traveller = tripClient.traveller
         createNewTrip(traveller)
         saveTrips()
     }
     
-    func createNewTrip(traveller: Traveller!) -> Trip {
-        let date = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
-        let dateString = formatter.stringFromDate(date)
+    func createNewTrip(_ traveller: Traveller!) -> Trip {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        let dateString = formatter.string(from: date)
         let trip = Trip(title: "Trip on \(dateString)", traveller: traveller, context: sharedContext)
         if let traveller = traveller {
             trip.traveller = traveller
@@ -126,7 +126,7 @@ class TripSelectorController: UIViewController {
 }
 
 extension TripSelectorController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let fetchTripsResultController = fetchTripsResultController {
             let sectionInfo = fetchTripsResultController.sections?[section]
             let cellCount = (sectionInfo?.numberOfObjects)!
@@ -136,21 +136,21 @@ extension TripSelectorController: UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionInfos = fetchTripsResultController.sections
         let sectionInfo = sectionInfos?[indexPath.section]
         let trip = sectionInfo?.objects?[indexPath.row] as! Trip
-        let tripCell = (tripsTable.dequeueReusableCellWithIdentifier("TripCellID")) as! TripViewCell
+        let tripCell = (tripsTable.dequeueReusableCell(withIdentifier: "TripCellID")) as! TripViewCell
         tripCell.tripClient = tripClient
         tripCell.trip = trip
         tripCell.textLabel?.text = trip.title
         return tripCell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == tripsTable {
-            let trip = fetchTripsResultController.objectAtIndexPath(indexPath) as! Trip
-            let tripMap = storyboard?.instantiateViewControllerWithIdentifier("TripMapController") as! TripMapController
+            let trip = fetchTripsResultController.object(at: indexPath) as! Trip
+            let tripMap = storyboard?.instantiateViewController(withIdentifier: "TripMapController") as! TripMapController
             tripMap.tripClient = tripClient
             tripMap.trip = trip
             navigationController?.pushViewController(tripMap, animated: true)
@@ -159,21 +159,21 @@ extension TripSelectorController: UITableViewDataSource {
 }
 
 extension TripSelectorController: UITableViewDelegate {
-    func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         return
     }
     
-    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         return
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TripViewCell
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TripViewCell
         let cellTrip = cell.trip
         switch editingStyle {
-        case .Delete:
-            print("Deleting \(cellTrip.title)")
-            sharedContext.deleteObject(cellTrip)
+        case .delete:
+            print("Deleting \(cellTrip?.title)")
+            sharedContext.delete(cellTrip!)
             try! sharedContext.save()
             
         default:
@@ -181,51 +181,51 @@ extension TripSelectorController: UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.delete
     }
     
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Delete trip"
     }
 }
 
 extension TripSelectorController: NSFetchedResultsControllerDelegate {
     
-    func updateCell(trip: Trip, cell: TripViewCell) {
+    func updateCell(_ trip: Trip, cell: TripViewCell) {
         cell.textLabel?.text = trip.title
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .Delete:
-            tripsTable.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Right)
+        case .delete:
+            tripsTable.deleteRows(at: [indexPath!], with: .right)
             
-        case .Insert:
-            tripsTable.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
+        case .insert:
+            tripsTable.insertRows(at: [newIndexPath!], with: .left)
 
-        case .Move:
-            tripsTable.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Right)
-            tripsTable.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
+        case .move:
+            tripsTable.deleteRows(at: [indexPath!], with: .right)
+            tripsTable.insertRows(at: [newIndexPath!], with: .left)
             
-        case .Update:
+        case .update:
             let trip = anObject as! Trip
-            let cell = tripsTable.cellForRowAtIndexPath(indexPath!) as! TripViewCell
+            let cell = tripsTable.cellForRow(at: indexPath!) as! TripViewCell
             updateCell(trip, cell: cell)
         }
         
         return
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         return
     }
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tripsTable.beginUpdates()
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tripsTable.endUpdates()
     }
 }
