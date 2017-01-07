@@ -102,8 +102,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select fastest lane (count left to right)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFE-PF-cvF">
+                                <rect key="frame" x="101" y="535" width="368" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.41107772435897438" green="0.41107772435897438" blue="0.41107772435897438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPr-ZR-fml">
+                                <rect key="frame" x="67" y="203" width="240" height="128"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="77W-RP-vEx" appends="YES" id="Kgp-XF-fKV"/>
+                                </connections>
+                            </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bCp-PQ-Sss">
-                                <rect key="frame" x="219" y="557" width="174" height="29"/>
+                                <rect key="frame" x="46" y="564" width="174" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="seN-kK-eok"/>
                                 </constraints>
@@ -118,19 +131,6 @@
                                     <action selector="laneSelected:forEvent:" destination="cqO-a5-GHh" eventType="valueChanged" id="ckp-Gf-z15"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select fastest lane (count left to right)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFE-PF-cvF">
-                                <rect key="frame" x="101" y="535" width="368" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.41107772435897438" green="0.41107772435897438" blue="0.41107772435897438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPr-ZR-fml">
-                                <rect key="frame" x="67" y="203" width="240" height="128"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="77W-RP-vEx" appends="YES" id="Kgp-XF-fKV"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -138,8 +138,6 @@
                             <constraint firstItem="lPr-ZR-fml" firstAttribute="leading" secondItem="KDb-cw-qKJ" secondAttribute="leadingMargin" constant="-20" id="2kI-4S-i5x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lPr-ZR-fml" secondAttribute="trailing" constant="-20" id="Bql-BL-dhN"/>
                             <constraint firstItem="B2v-mt-sjV" firstAttribute="top" secondItem="bCp-PQ-Sss" secondAttribute="bottom" constant="10" id="Ji5-UP-4er"/>
-                            <constraint firstItem="bCp-PQ-Sss" firstAttribute="centerX" secondItem="KDb-cw-qKJ" secondAttribute="centerX" id="KSe-SW-qC9"/>
-                            <constraint firstItem="bCp-PQ-Sss" firstAttribute="centerX" secondItem="KDb-cw-qKJ" secondAttribute="centerX" id="Wl7-Xh-uul"/>
                             <constraint firstItem="lPr-ZR-fml" firstAttribute="top" secondItem="3XR-aW-Vgx" secondAttribute="bottom" constant="-20" id="bVh-VM-HaU"/>
                             <constraint firstItem="OFE-PF-cvF" firstAttribute="centerX" secondItem="KDb-cw-qKJ" secondAttribute="centerX" id="ed7-00-6tK"/>
                             <constraint firstItem="B2v-mt-sjV" firstAttribute="top" secondItem="lPr-ZR-fml" secondAttribute="bottom" id="uwP-6d-aYo"/>
@@ -206,7 +204,7 @@
                                     <action selector="anonymousLoginButtonPressed:" destination="hD2-c0-ZhI" eventType="touchUpInside" id="our-hl-AYN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FastLane" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKz-yY-8kG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fast Lane" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKz-yY-8kG">
                                 <rect key="frame" x="169" y="72" width="263" height="75"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="39"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -221,9 +219,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-7S-sgV">
                                 <rect key="frame" x="38" y="184" width="516" height="150"/>
                                 <color key="backgroundColor" red="0.01201018436" green="0.71240090410000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">We have all wasted time in traffic -- seeing some lanes move faster while we are stuck in slower-moving lanes.  As it turnes out, there are trends that can be observed for traffic patterns in a busy highway. For example, a lane that exists to a not-so busy street lets cars in that lane to go faster than other lanes in the highway. Only if you knew that somehow and could get on that lane ASAP!! -- Of course you need to maneuver back to the main road before the lane exits :) Likewise, an exit to an even busier highway causes the traffic to spill over to the main road. Therefore, lanes farther away from the exit tend to go faster.
+                                <mutableString key="text">We have all wasted time in traffic -- seeing some lanes move faster while we are stuck in slower-moving lanes.  As it turnes out, there are trends that can be observed for traffic patterns in a busy highway. For example, a lane that exits to a not-so busy street lets cars in that lane go faster than other lanes in the highway. Only if you knew that somehow and could get on that lane ASAP!! Likewise, an exit to an even busier road causes the traffic to spill over to the main highway. Therefore, lanes farther away from the exit tend to go faster.
 
-FastLane is an app that allows you to record these trends as you pass through traffic so you can choose your lanes wisely the next time around.  Use the Google Sign-in button below to keep your profile stored in the cloud -- you can conveniently access it from any device. Otherwise, use the anonymous login option, if so desired. </string>
+Fast Lane is an app that allows you to record these trends as you pass through traffic so you can choose your lanes wisely the next time around.  Use the Google Sign-in button below to keep your profile stored in the cloud -- you can conveniently access it from any device. Otherwise, use the anonymous login option, if you so desire. </mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

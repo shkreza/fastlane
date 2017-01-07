@@ -3,10 +3,16 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "TripClient.(loadFromCloud(UIViewController, tracker : ProgressTracker) -&gt; ()).(closure #1):TripClient.swift">
+         contextName = "TripSelectorController.controller(NSFetchedResultsController&lt;NSFetchRequestResult&gt;, didChange : Any, at : IndexPath?, for : NSFetchedResultsChangeType, newIndexPath : IndexPath?) -&gt; ():TripSelectorController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Traveller.loadTrips([String : AnyObject]) -&gt; Bool:Traveller.swift">
+      </ContextState>
+      <ContextState
+         contextName = "LaneAnnotationView.init(annotation : MKAnnotation?, reuseIdentifier : String?) -&gt; LaneAnnotationView:LaneAnnotationView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "print(response[&quot;trips&quot;])">
+               value = "self.lane.lane">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -22,16 +28,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "TripSelectorController.controller(NSFetchedResultsController&lt;NSFetchRequestResult&gt;, didChange : Any, at : IndexPath?, for : NSFetchedResultsChangeType, newIndexPath : IndexPath?) -&gt; ():TripSelectorController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "Traveller.loadTrips([String : AnyObject]) -&gt; Bool:Traveller.swift">
-      </ContextState>
-      <ContextState
          contextName = "TripSelectorController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:TripSelectorController.swift">
          <PersistentStrings>
             <PersistentString
                value = "print(trip)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TripClient.(loadFromCloud(UIViewController, tracker : ProgressTracker) -&gt; ()).(closure #1):TripClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "print(response[&quot;trips&quot;])">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
